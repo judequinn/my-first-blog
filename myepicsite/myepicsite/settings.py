@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'myepicsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'baka',
@@ -83,6 +83,14 @@ DATABASES = {
         'PASSWORD': '1101',
         'HOST': '',
         'PORT': '',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
