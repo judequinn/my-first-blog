@@ -1,6 +1,0 @@
-*.pyc
-__pycache__
-venv34
-db.sqlite3
-.DS_Store
-*~
