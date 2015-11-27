@@ -28,7 +28,7 @@ body{
 	color:#7F8289;
 	font-weight:300;
 	font-size:16px;
-	font-family: 'Titillium Web', sans-serif;
+	font-family: 'Philosopher', sans-serif;
 	line-height:28px;
 }
 
@@ -113,7 +113,7 @@ hr {
 
 input, button, select, textarea {
 	font-weight: 300;
-	font-family: 'Titillium Web', sans-serif;
+	font-family: 'Philosopher', sans-serif;
 	outline: 0;
 }
 
@@ -205,7 +205,7 @@ h6{
 	margin:0 0 20px 0;
 	color:#FFFFFF;
 	font-weight:300;
-	font-family: 'Titillium Web', sans-serif;
+	font-family: 'Philosopher', sans-serif;
 	line-height:1.5em;
 }
 
@@ -330,7 +330,7 @@ h3.spec {
 	font-size: 60px;
 	color: #FFFFFF;
 	letter-spacing: -3px;
-	text-transform: uppercase;	
+	/* text-transform: uppercase; */	
 }
 
 #home-slider .control-nav {
@@ -1137,10 +1137,9 @@ footer {
 
 footer .credits {
 	color: #FFFFFF;
-	font-size: 13px;
+	font-size: 15px;
 	margin-bottom: 0;
-	padding: 20px 0;
-	text-transform: uppercase;	
+	padding: 20px 0;	
 }
 
 /* ==================================================
