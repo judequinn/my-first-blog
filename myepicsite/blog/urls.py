@@ -3,12 +3,11 @@ from . import views
 
 urlpatterns = [
 
-    url(r'^$', views.title, name='title'),
-    url(r'^title$', views.title, name='title'),
+    url(r'^$', views.index, name='index'),
     url(r'^creative$', views.creative, name='creative'),
     url(r'^reviews$', views.reviews, name='reviews'),
     url(r'^gallery$', views.gallery, name='gallery'),
-    url(r'^about$', views.about, name='about'),
+    url(r'^index$', views.index, name='index'),
     url(r'^contact$', views.contact, name='contact'),
 
 ]
