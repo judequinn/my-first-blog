@@ -6,7 +6,7 @@ from sorl.thumbnail import ImageField
 # Посты
 class Post(models.Model):
 
-    SECTION_CHOICES = ( (None, '-'), ('gallery', 'Галерея'),('reviews', 'Обзоры'), ('accessories', 'Аксессуары') )
+    SECTION_CHOICES = ( (None, 'Выбрать раздел'), ('gallery', 'Галерея'),('reviews', 'Обзоры'), ('accessories', 'Аксессуары') )
 
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
@@ -25,9 +25,10 @@ class Post(models.Model):
 
 # Картинки
 class Picture(models.Model):
+
     post = models.ForeignKey('Post')
     picture = ImageField(upload_to="%Y/%m/%d",blank=True,null=True)
     comment = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.post.title + ' ' + str(self.post.pk)
+        return str(self.post.pk) + ' ' + self.post.title

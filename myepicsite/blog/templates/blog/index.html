@@ -10,8 +10,8 @@
     <div class="row">
         <div class="span12">
             <div class="title-page">
-                <h2 class="title">Описание того, что есть на сайте.</h2>
-                <h3 class="title-description">Подзаголовок.</h3>
+                <h2 class="title">Название сайта.</h2>
+                <h3 class="title-description">Краткое описание.</h3>
             </div>
         </div>
     </div>
@@ -25,25 +25,11 @@
         	<div class="image-wrap">
                 <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'creative' %}'>Проекты</a></span>
+                    <span class="overlay-text-thumb"><a href='{% url 'creative' %}'>Твори</a></span>
                 </div>
                 <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Проекты">
             </div>
-            <h3 class="profile-name">Проекты</h3>
-            <p class="profile-description">Описание раздела (если потребуется)</p>
-        </div>
-        <!-- Конец -->
-        
-        <!-- Начало -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'reviews' %}'>Тексты</a></span>
-                </div>
-                <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Тексты">
-            </div>
-            <h3 class="profile-name">Тексты</h3>
+            <!-- <h3 class="profile-name">Проекты</h3>-->
             <p class="profile-description">Описание раздела</p>
         </div>
         <!-- Конец -->
@@ -53,11 +39,25 @@
         	<div class="image-wrap">
                 <div class="hover-wrap">
                     <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'gallery' %}'>Фотографии</a></span>
+                    <span class="overlay-text-thumb"><a href='{% url 'reviews' %}'>Пиши</a></span>
+                </div>
+                <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Тексты">
+            </div>
+            <!--<h3 class="profile-name">Тексты</h3>-->
+            <p class="profile-description">Описание раздела</p>
+        </div>
+        <!-- Конец -->
+        
+        <!-- Начало -->
+    	<div class="span4 profile">
+        	<div class="image-wrap">
+                <div class="hover-wrap">
+                    <span class="overlay-img"></span>
+                    <span class="overlay-text-thumb"><a href='{% url 'gallery' %}'>Вдохновляйся</a></span>
                 </div>
                 <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Фотографии">
             </div>
-            <h3 class="profile-name">Фотографии</h3>
+            <!--<h3 class="profile-name">Фотографии</h3>-->
             <p class="profile-description">Описание раздела</p>
         </div>
         <!-- Конец -->

@@ -1,25 +1,31 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Post
+from .models import Post, Picture
 from .forms import PostForm, PictureForm
 from myepicsite.settings import MEDIA_ROOT
+from django.forms.models import inlineformset_factory
 
 
 def creative(request):  
 	return render(request, 'blog/creative.html')
 
+
 def gallery(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')    
     return render(request, 'blog/gallery.html', {'posts' : posts})
 
+
 def reviews(request): 
     return render(request, 'blog/reviews.html')
+
 
 def index(request):
     return render(request, 'blog/index.html')
 
+
 def contact(request):
     return render(request, 'blog/contact.html') 
+
 
 def accessories(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
@@ -29,25 +35,18 @@ def accessories(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
-
-def handle_uploaded_file(f):
-    with open('MEDIA_ROOT', 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
         
 
 def post_new(request):
 
+    PictureFormset = inlineformset_factory(Post, Picture, form=PictureForm, extra=2)
+
     if request.method == "POST":
 
         post_form = PostForm(request.POST)
-        picture_form = PictureForm(request.POST, request.FILES)
+        picture_formset = PictureFormset(request.POST, request.FILES)
 
-        if post_form.is_valid() and picture_form.is_valid():
-
-            #import ipdb; ipdb.set_trace()
-
-            handle_uploaded_file(request.FILES['picture'])
+        if post_form.is_valid() and picture_formset.is_valid():
 
             # Сохранение поста
             post = post_form.save(commit=False)
@@ -55,13 +54,12 @@ def post_new(request):
             post.published_date = timezone.now()
             post.save()
 
-            #import ipdb; ipdb.set_trace()
-
             #Сохранение картинок
-            picture = picture_form.save(commit=False)
-            picture.post = Post.objects.get(pk=post.pk)
-           
-            picture.save()
+            for picture_form in picture_formset:
+
+                picture = picture_form.save(commit=False)
+                picture.post = Post.objects.get(pk=post.pk)           
+                picture.save()
 
             # Редирект на страницу с новым постом
             return redirect('blog.views.post_detail', pk=post.pk)
@@ -69,12 +67,13 @@ def post_new(request):
     # Отобразить пустую форму
     else:
         post_form = PostForm()
-        picture_form = PictureForm()
+        picture_formset = PictureFormset()
 
     # Отобразить страницу с формой
-    return render(request, 'blog/post_new.html', {'post_form': post_form, 'picture_form': picture_form})
+    return render(request, 'blog/post_new.html', {'post_form': post_form, 'picture_formset': picture_formset})
 
 def post_edit(request, pk):
+    
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         post_form = PostForm(request.POST)

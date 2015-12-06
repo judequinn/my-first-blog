@@ -5,22 +5,29 @@
 {% load thumbnail %}
 
 {% block content %}
+
 <div id="work" class="page">
     <div class="container">     
-	    <div class="post">
-	        {% if post.published_date %}
-	            <div class="date">
-	                {{ post.published_date }}
-	            </div>
-	        {% endif %}
-	        <h1>{{ post.title }}</h1>
-		        {% thumbnail post.picture_set.all.0.picture "x500" crop="center" as im %}
-		            <img src="{{ im.url }}" alt="{{ post.text }}">
-		        {% endthumbnail %}
+	    <div class="post">									
+			<div>
+	            <p>{{ post.published_date }}</p>
+	            	<h2><a href="">{{ post.title }}</a></h2>
 
-		    <p><a href="{{ MEDIA_URL }}{{ post.picture_set.all.0.picture }}">Открыть в полном размере</a>
-	        <p>{{ post.text|linebreaks }}</p>
+	            		{{ post.text|linebreaks }}
+		            	
+		            	{% for image in post.picture_set.all %}
+		            	
+		            		{% thumbnail image.picture "x600" crop="center" as im %}
+		                        <a href='{{ MEDIA_URL }}{{ image.picture }}'><img src="{{ im.url }}" alt="{{ image.comment }}"></a>
+		                    {% endthumbnail %}
+
+		            		<p>{{ image.comment|linebreaks }}</p>
+
+		            	{% endfor %}
+
+	        </div>
 	    </div>
 	</div>
 </div>	
+
 {% endblock %}

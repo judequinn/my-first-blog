@@ -10,7 +10,28 @@
 	        	<h1>Новый пост</h1>
     				<form method="POST" class="contact-form" enctype="multipart/form-data" >{% csrf_token %}
         				{{ post_form.as_ul }}
-        				{{ picture_form.as_ul }}
+
+				        <div id="fieldset-person">
+
+				            <fieldset>
+
+				                {{ picture_formset.management_form }}
+				                {{ picture_formset.non_form_errors }}            
+
+				                {% for picture_form in picture_formset %}
+
+				                    {{ picture_form }}
+
+				                <div>
+				                    {{ form.description.errors }}
+				                    {{ form.description.label_tag }}
+				                    {{ form.description }}
+				                </div>
+
+				                {% endfor %}
+
+				            </fieldset> 
+				        </div>
     				<button type="submit" class="save btn btn-default">Save</button>
     
     				</form>

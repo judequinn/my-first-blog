@@ -34,7 +34,7 @@ body{
 
 
 a{
-	color:#30D5C8;
+	color:#FFFFFF;
 	text-decoration: none;
 	cursor: pointer;
 	
@@ -48,7 +48,7 @@ a:hover,
 a:active,
 a:focus{
 	outline: 0;
-	color:#FFFFFF;
+	color:#30D5C8;
 	text-decoration:none;
 }
 
@@ -790,7 +790,8 @@ nav#menu #menu-nav li a:hover {
 }
 
 .profile-description {
-	margin-bottom: 25px;	
+	margin-bottom: 25px;
+	text-align: center;	
 }
 
 .image-wrap {
