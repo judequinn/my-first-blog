@@ -4,3 +4,9 @@ venv34
 db.sqlite3
 .DS_Store
 *~
+media/*
+myepicsite/blog/migrations/*
+myepicsite/media/*
+MEDIA_ROOT
+
+

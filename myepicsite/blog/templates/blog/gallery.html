@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load thumbnail %}
+
 {% block content %}
 
 <div id="work" class="page">
@@ -14,15 +16,21 @@
                         
                             <!-- Item Project and Filter Name -->
                             {% for post in posts %}
-                                <li class="item-thumbs span3 design">
-                                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ post.title }}" href="{{ MEDIA_URL }}{{ post.image }}">
-                                        <span class="overlay-img"></span>
-                                        <span class="overlay-img-thumb font-icon-plus"></span>
-                                    </a>
-                                    <!-- Thumb Image and Description -->
-                                    <img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.text }}">
-                                </li>
+                                {% if post.tag == 'gallery' %}
+                                    <li class="item-thumbs span3 design">
+                                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                        <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ post.title }}" href="{{ MEDIA_URL }}{{ post.picture_set.all.0.picture }}">
+                                            <span class="overlay-img"></span>
+                                            <span class="overlay-img-thumb font-icon-plus"></span>
+                                        </a>
+                                        <!-- Thumb Image and Description -->
+                                        {% thumbnail post.picture_set.all.0.picture "x200" crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="{{ post.text }}">
+                                        {% endthumbnail %}
+                                        
+                                    </li>
+                                {% endif %}
+   
                             {% endfor %}
                             <!-- End Item Project -->
 

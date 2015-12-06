@@ -1,9 +1,34 @@
 from django import forms
+from .models import Post, Picture
+from sorl.thumbnail import ImageField
 
-from .models import Post
 
 class PostForm(forms.ModelForm):
 
     class Meta:
+
         model = Post
-        fields = ('title', 'text',)
+        exclude = ['author', 'created_date', 'published_date']
+
+        labels = {
+
+        		'title': ('Заголовок поста:'),
+        		'text': ('Текст:'),
+        		'tag': ('Тэг для тематической сортировки:'),
+
+        }
+
+
+class PictureForm(forms.ModelForm):
+
+	class Meta:
+
+		model = Picture
+		exclude = ['post']
+
+		labels = {
+
+				'picture': ('Прикрепить картинку:'),
+				'comment': ('Комментарий:'),
+
+		}

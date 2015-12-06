@@ -111,10 +111,19 @@ hr {
 	text-decoration:line-through;
 }
 
-input, button, select, textarea {
+button, select {
 	font-weight: 300;
 	font-family: 'Exo 2', sans-serif;
 	outline: 0;
+}
+
+textarea, input {
+
+	font-weight: 300;
+	font-family: 'Exo 2', sans-serif;
+	outline: 0;
+	width: 75%;
+	height: auto;
 }
 
 input:focus, 
@@ -940,9 +949,11 @@ nav#menu #menu-nav li a:hover {
     height: auto;
     padding: 15px;
 	margin: 0;
-	
+
+
+
     resize: none;
-}
+} 
 
 #contact-form input {
     width: 100%;

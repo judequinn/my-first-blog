@@ -1,0 +1,22 @@
+{% extends 'blog/base_menu.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="page">
+	<div class="container">
+
+	        	<h1>Новый пост</h1>
+    				<form method="POST" class="contact-form" enctype="multipart/form-data" >{% csrf_token %}
+        				{{ post_form.as_ul }}
+        				{{ picture_form.as_ul }}
+    				<button type="submit" class="save btn btn-default">Save</button>
+    
+    				</form>
+
+    </div>
+</div>
+
+
+{% endblock %}

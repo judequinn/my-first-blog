@@ -364,7 +364,7 @@ $(document).ready(function(){
 	Modernizr.load([
 	{
 		test: Modernizr.placeholder,
-		nope: 'static/js/placeholder.js', 
+		nope: "static/js/placeholder.js", 
 		complete : function() {
 				if (!Modernizr.placeholder) {
 						Placeholders.init({

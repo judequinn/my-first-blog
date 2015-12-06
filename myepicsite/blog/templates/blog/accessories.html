@@ -1,0 +1,35 @@
+{% extends 'blog/base_menu.html' %}
+
+{% load staticfiles %}
+
+{% load thumbnail %}
+
+{% block content %}
+
+
+<div class="page">
+	<div class="container">
+
+		{% for post in posts %}
+		{% if post.tag == 'accessories' %}	
+					
+		<div>
+            <p>published: {{ post.published_date }}</p>
+            	<h1><a href="">{{ post.title }}</a></h1>
+	            	
+	            	{% for image in post.picture_set.all %}
+	            		{% thumbnail image.picture "x800" crop="center" as im %}
+	                        <img src="{{ im.url }}" alt="{{ image.comment }}">
+	                    {% endthumbnail %}
+	            		<p>{{ image.comment|linebreaks }}</p>
+	            	{% endfor %}
+
+        </div>
+		{% endif%}
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% endblock %}

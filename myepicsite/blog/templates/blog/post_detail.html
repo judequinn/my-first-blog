@@ -1,0 +1,26 @@
+{% extends 'blog/base_menu.html' %}
+
+{% load staticfiles %}
+
+{% load thumbnail %}
+
+{% block content %}
+<div id="work" class="page">
+    <div class="container">     
+	    <div class="post">
+	        {% if post.published_date %}
+	            <div class="date">
+	                {{ post.published_date }}
+	            </div>
+	        {% endif %}
+	        <h1>{{ post.title }}</h1>
+		        {% thumbnail post.picture_set.all.0.picture "x500" crop="center" as im %}
+		            <img src="{{ im.url }}" alt="{{ post.text }}">
+		        {% endthumbnail %}
+
+		    <p><a href="{{ MEDIA_URL }}{{ post.picture_set.all.0.picture }}">Открыть в полном размере</a>
+	        <p>{{ post.text|linebreaks }}</p>
+	    </div>
+	</div>
+</div>	
+{% endblock %}
