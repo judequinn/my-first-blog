@@ -16,9 +16,9 @@
 		{% if post.published_date %}
 		{% if post.tag == 'accessories' %}	
 					
-		<div class="margin-70">
+		<div class="margin-bottom-percents">
             <!-- <p>{{ post.published_date }}</p> -->
-            	<h2><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a></h2>
+            	<h3><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a></h3>
 
             		{{ post.text|linebreaks }}
 

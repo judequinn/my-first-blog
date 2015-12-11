@@ -300,6 +300,10 @@ h3.spec {
 	margin-bottom:80px !important;
 }
 
+.margin-bottom-percents {
+	margin-bottom: 5%;
+}
+
 /* ==================================================
    Home Slider
 ================================================== */
@@ -642,7 +646,7 @@ nav#menu #menu-nav li a:hover {
 
 .page {
 	background: #2F3238;
-	padding: 100px 0;
+	padding: 30px 0;
 	position: relative;
 	z-index: 99;
 }

@@ -15,13 +15,13 @@
 				<a href="{% url 'post_edit' pk=post.pk %}"><button class="btn btn-default">Редактировать пост</button></a>
 				{% endif %}
 	            <p class="published-date">{{ post.published_date|date:"d E Y" }}</p>
-	            	<h2><a href="">{{ post.title }}</a></h2>
+	            	<h3><a href="">{{ post.title }}</a></h3>
 
 	            		{{ post.text|linebreaks }}
 		            	
 		            	{% for image in post.picture_set.all %}
 
-		            	<div class="margin-70">
+		            	<div class="margin-bottom-percents">
 		            	
 		            		{% thumbnail image.picture "x600" crop="center" as im %}
 		                        <a href='{{ MEDIA_URL }}{{ image.picture }}'><img src="{{ im.url }}" alt="{{ image.comment }}"></a>
