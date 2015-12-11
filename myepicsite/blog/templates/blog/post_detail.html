@@ -11,7 +11,9 @@
 	    <div class="post">
 
 			<div>
+				{% if user.is_authenticated %}
 				<a href="{% url 'post_edit' pk=post.pk %}"><button class="btn btn-default">Редактировать пост</button></a>
+				{% endif %}
 	            <p class="published-date">{{ post.published_date|date:"d E Y" }}</p>
 	            	<h2><a href="">{{ post.title }}</a></h2>
 
