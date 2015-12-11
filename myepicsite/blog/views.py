@@ -70,23 +70,38 @@ def post_new(request):
         picture_formset = PictureFormset()
 
     # Отобразить страницу с формой
-    return render(request, 'blog/post_new.html', {'post_form': post_form, 'picture_formset': picture_formset})
+    return render(request, 'blog/post_edit.html', {'post_form': post_form, 'picture_formset': picture_formset})
 
 def post_edit(request, pk):
+
+    # import ipdb; ipdb.set_trace()
     
+    PictureFormset = inlineformset_factory(Post, Picture, form=PictureForm, extra=2)
     post = get_object_or_404(Post, pk=pk)
+
     if request.method == "POST":
-        post_form = PostForm(request.POST)
-        picture_form = PictureForm(request.POST)
-        if post_form.is_valid() and picture_form.is_valid():
+
+        post_form = PostForm(request.POST, instance=post)
+        picture_formset = PictureFormset(request.POST, instance=post)
+
+        if post_form.is_valid() and picture_formset.is_valid():
+
             post = post_form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            picture = picture_form.save()
-            picture.save()
+
+            for picture_form in picture_formset:
+
+                picture = picture_form.save(commit=False)
+                picture.post = Post.objects.get(pk=post.pk)           
+                picture.save()
+
             return redirect('blog.views.post_detail', pk=post.pk)
+
     else:
-        form = PostForm(instance=post)
-        icture_form = PictureForm()
-    return render(request, 'blog/post_edit.html', {'post_form': post_form, 'picture_form': picture_form})
+
+        post_form = PostForm(instance=post)
+        picture_formset = PictureFormset(instance=post)
+
+    return render(request, 'blog/post_edit.html', {'post_form': post_form, 'picture_formset': picture_formset})

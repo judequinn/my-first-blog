@@ -44,13 +44,6 @@ BRUSHED.listenerMenu = function(){
 
 
 /* ==================================================
-   Slider Options
-================================================== */
-
-
-
-
-/* ==================================================
    Navigation Fix
 ================================================== */
 
@@ -359,7 +352,7 @@ BRUSHED.toolTip = function(){
 
 //BRUSHED.slider();
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 
 	Modernizr.load([
 	{
@@ -376,7 +369,7 @@ $(document).ready(function(){
 				}
 		}
 	}
-	]);
+	]); */
 	
 	// Preload the page with jPreLoader
 	/*$('body').jpreLoader({
@@ -411,4 +404,4 @@ $(window).resize(function(){
 	BRUSHED.mobileNav();
 });
 
-});
+
