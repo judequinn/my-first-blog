@@ -106,10 +106,7 @@
                   <li><a class='external' href='{% url 'creative' %}'>Твори</a></li>
                   <li><a class='external' href='{% url 'reviews' %}'>Пиши</a></li>
                   <li><a class='external' href='{% url 'gallery' %}'>Вдохновляйся</a></li>                
-                  <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li>
-                {% if user.is_authenticated %}  
-                  <li><a class='external' href='{% url 'post_new' %}'>Новый пост</a></li>
-                {% endif %}  				
+                  <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li> 				
             </ul>
           </nav>          
       </div>

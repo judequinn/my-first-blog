@@ -1,6 +1,13 @@
 from django.contrib import admin
 from .models import Post
-from .models import Picture
+from .forms import PostForm
 
-admin.site.register(Post)
-admin.site.register(Picture)
+
+class TinyMCEAdmin(admin.ModelAdmin):
+    form = PostForm
+    js = [
+            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+            '/static/grappelli/tinymce_setup/tinymce_setup.js',
+        ]
+
+admin.site.register(Post, TinyMCEAdmin)

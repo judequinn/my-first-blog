@@ -1,34 +1,20 @@
 from django import forms
-from .models import Post, Picture
-from sorl.thumbnail import ImageField
+from .models import Post
+from myepicsite.widgets import AdvancedEditor
 
 
 class PostForm(forms.ModelForm):
 
+    text = forms.CharField(widget=AdvancedEditor())
+
     class Meta:
 
         model = Post
-        exclude = ['author', 'created_date', 'published_date']
-
+        fields =  ['author', 'title', 'tag', 'created_date', 'published_date']
         labels = {
-
-        		'title': ('Заголовок поста:'),
-        		'text': ('Текст:'),
-        		'tag': ('Раздел:'),
-
+                'author': ('Автор:'),
+                'title': ('Заголовок поста:'),
+                'tag': ('Раздел:'),
+                'created_date': ('Дата создания:'),
+                'published_date': ('Дата публикации:'),
         }
-
-
-class PictureForm(forms.ModelForm):
-
-	class Meta:
-
-		model = Picture
-		exclude = ['post']
-
-		labels = {
-
-				'picture': ('Прикрепить картинку:'),
-				'comment': ('Комментарий:'),
-
-		}

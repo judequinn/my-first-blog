@@ -11,16 +11,16 @@
 	<div class="container">
 
 		{% for post in posts %}
-
-		<!-- Если пост опубликован и расположен в разделе "Аксессуары" -->
+		
 		{% if post.published_date %}
-		{% if post.tag == 'accessories' %}	
+		{% if post.tag == 'accessories' %}
+		<!-- Если пост опубликован и расположен в разделе "Аксессуары" -->	
 					
 		<div class="margin-bottom-percents">
             <!-- <p>{{ post.published_date }}</p> -->
             	<h3><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a></h3>
 
-            		{{ post.text|linebreaks }}
+            		{{ post.text|safe }}
 
                         {% thumbnail post.picture_set.all.0.picture "x600" crop="center" as im %}
                             <a href='{% url 'post_detail' pk=post.pk %}'><img src="{{ im.url }}" alt="{{ post.text }}"></a>
