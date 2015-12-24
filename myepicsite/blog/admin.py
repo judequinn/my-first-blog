@@ -1,13 +1,28 @@
 from django.contrib import admin
-from .models import Post
-from .forms import PostForm
+from .models import Post, Picture
+from .forms import PostForm, PictureForm
 
 
-class TinyMCEAdmin(admin.ModelAdmin):
+class WysiwygAdmin(admin.ModelAdmin):
+
     form = PostForm
-    js = [
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/grappelli/tinymce_setup/tinymce_setup.js',
-        ]
+    exclude = ('author',)
 
-admin.site.register(Post, TinyMCEAdmin)
+    def save_model(self, request, obj, form, change):
+	    if not change:
+	        obj.author = request.user
+	    obj.save()
+
+
+class MyPicture(admin.ModelAdmin):
+
+	form = PictureForm
+	exclude = ('author',)
+
+	def save_model(self, request, obj, form, change):
+	    if not change:
+	        obj.author = request.user
+	    obj.save()
+
+admin.site.register(Post, WysiwygAdmin)
+admin.site.register(Picture, MyPicture)

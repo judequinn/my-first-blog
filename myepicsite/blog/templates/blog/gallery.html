@@ -12,26 +12,23 @@
             <div class="span12">
                 <div class="row">
                     <section id="projects">
-                        <ul id="thumbs">
-                        
-                            <!-- Item Project and Filter Name -->
-                            {% for post in posts %}
-                                {% if post.tag == 'gallery' %}
-                                    <li class="item-thumbs span3 design">
-                                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                        <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ post.title }}" href="{{ post.text|safe }}">
-                                            <span class="overlay-img"></span>
-                                            <span class="overlay-img-thumb font-icon-plus"></span>
-                                        </a>
-                                        <!-- Thumb Image and Description -->
-                                            <img src="{{ post.text|safe }}" alt="zhazha">
-                                        
-                                    </li>
-                                {% endif %}
-   
-                            {% endfor %}
-                            <!-- End Item Project -->
+                        <ul id="thumbs">  
 
+                            {% for picture in pictures %}
+                                <li class="item-thumbs span3 design">
+                                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="{{ picture.title }}" href="{{ MEDIA_URL }}{{ picture.picture }}">
+                                        <span class="overlay-img"></span>
+                                        <span class="overlay-img-thumb font-icon-plus"></span>
+                                    </a>
+                                    <!-- Thumb Image and Description -->
+                                    {% thumbnail picture.picture "x200" crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="{{ picture.comment }}">
+                                    {% endthumbnail %}
+                                    
+                                </li>
+                            {% endfor %}
+                            
                         </ul>
                     </section>                    
                 </div>
