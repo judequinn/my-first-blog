@@ -8,5 +8,5 @@ media/*
 myepicsite/blog/migrations/*
 myepicsite/media/*
 MEDIA_ROOT
-
+myepicsite/static/*
 
