@@ -64,7 +64,6 @@
 
 <!-- Fav Icon -->
 <link rel="shortcut icon" href="#">
-
 <link rel="apple-touch-icon" href="#">
 <link rel="apple-touch-icon" sizes="114x114" href="#">
 <link rel="apple-touch-icon" sizes="72x72" href="#">
@@ -89,6 +88,9 @@
 </script>
 <!-- End Analytics -->
 
+<!-- Yandex Maps -->
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -99,17 +101,14 @@
       <div class="sticky-nav">
       	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>          
           <div id="logo">
-          	<a href='{% url 'index' %}' title="Вернуться на первый экран">Brushed Template</a>
+          	<a href='{% url 'index' %}' title="На главную">Блог</a>
           </div>          
           <nav id="menu">
           	<ul id="menu-nav">            	  
                   <li><a class='external' href='{% url 'creative' %}'>Твори</a></li>
                   <li><a class='external' href='{% url 'reviews' %}'>Пиши</a></li>
                   <li><a class='external' href='{% url 'gallery' %}'>Вдохновляйся</a></li>                
-                  <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li>
-                {% if user.is_authenticated %}  
-                  <li><a class='external' href='{% url 'post_new' %}'>Новый пост</a></li>
-                {% endif %}  				
+                  <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li> 				
             </ul>
           </nav>          
       </div>
@@ -118,9 +117,8 @@
 
   <div id="main">
 
-{% block content %}
-
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 
   </div>
 </div>

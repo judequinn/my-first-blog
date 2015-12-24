@@ -1,0 +1,48 @@
+{% extends 'blog/base_menu.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+
+
+<div class="page">
+	<div class="container">
+		<div id="map" style="width: 800px; height: 600px"></div>
+
+
+
+	</div>
+</div>
+
+<script type="text/javascript">
+    var map = new ymaps.Map("map", {
+            center: [55.76, 37.64], 
+            zoom: 11
+        });
+</script>
+
+<script type="text/javascript">
+    ymaps.ready(init);
+    var myMap;
+
+    function init(){     
+        myMap = new ymaps.Map("map", {
+            center: [55.76, 37.64],
+            zoom: 11
+        });
+
+        myPlacemark = new ymaps.Placemark([55.76, 37.64], { 
+            hintContent: 'Москва!', 
+            balloonContent: 'Столица России' 
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+
+    }
+</script>
+
+
+
+{% endblock %}

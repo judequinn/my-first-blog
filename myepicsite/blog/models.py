@@ -2,18 +2,23 @@ from django.db import models
 from django.utils import timezone
 from sorl.thumbnail import ImageField
 
-
 # Посты
 class Post(models.Model):
 
-    SECTION_CHOICES = ( (None, 'Выбрать раздел'), ('gallery', 'Галерея'),('reviews', 'Обзоры'), ('accessories', 'Аксессуары') )
+    SECTION_CHOICES = ( (None, 'Выбрать раздел'),('reviews', 'Обзоры'), ('accessories', 'Аксессуары') )
 
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
-    text = models.TextField(blank=True, null=True)
-    tag = models.CharField(max_length=30, choices=SECTION_CHOICES)
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    author = models.ForeignKey('auth.User', verbose_name='Автор')
+    title = models.CharField('Заголовок', max_length=200)
+    text = models.TextField('Текст поста', blank=True, null=True)
+    tag = models.CharField('Раздел', max_length=30, choices=SECTION_CHOICES)
+    c_latitude = models.FloatField('Широта', blank=True, null=True)
+    c_longitude = models.FloatField('Долгота', blank=True, null=True)
+    created_date = models.DateTimeField('Дата создания', default=timezone.now)
+    published_date = models.DateTimeField('Дата публикации', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'пост'
+        verbose_name_plural = 'посты'
 
     def publish(self):
         self.published_date = timezone.now()
@@ -26,9 +31,16 @@ class Post(models.Model):
 # Картинки
 class Picture(models.Model):
 
-    post = models.ForeignKey('Post')
-    picture = ImageField(upload_to="%Y/%m/%d",blank=True,null=True)
-    comment = models.TextField(blank=True, null=True)
+    author = models.ForeignKey('auth.User', verbose_name='Автор')
+    title = models.CharField('Название', max_length=200)
+    picture = ImageField('Загрузить картинку', upload_to="%Y/%m/%d",blank=True,null=True)
+    comment = models.TextField('Комментарий', blank=True, null=True)
+    created_date = models.DateTimeField('Дата создания', default=timezone.now)
+    published_date = models.DateTimeField('Дата публикации', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'картинка'
+        verbose_name_plural = 'картинки'
 
     def __str__(self):
-        return str(self.post.pk) + ' ' + self.post.title
+        return self.title

@@ -1,34 +1,31 @@
 from django import forms
 from .models import Post, Picture
-from sorl.thumbnail import ImageField
+
+
+class AdvancedEditor(forms.Textarea):
+
+    class Media:
+
+        js = ['/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+              '/static/grappelli/tinymce_setup/tinymce_setup.js',]
 
 
 class PostForm(forms.ModelForm):
 
+    text = forms.CharField(widget=AdvancedEditor(), label='Содержание')
+
     class Meta:
 
         model = Post
-        exclude = ['author', 'created_date', 'published_date']
-
-        labels = {
-
-        		'title': ('Заголовок поста:'),
-        		'text': ('Текст:'),
-        		'tag': ('Раздел:'),
-
-        }
+        fields =  ['author', 'title', 'tag', 'created_date', 
+        		   'published_date', 'c_latitude', 'c_longitude']
 
 
 class PictureForm(forms.ModelForm):
 
-	class Meta:
+    class Meta:
 
-		model = Picture
-		exclude = ['post']
+        model = Picture
+        fields =  ['author', 'title', 'created_date', 
+                   'published_date', 'picture', 'comment']
 
-		labels = {
-
-				'picture': ('Прикрепить картинку:'),
-				'comment': ('Комментарий:'),
-
-		}
