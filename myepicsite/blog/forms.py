@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
 
         model = Post
         fields =  ['author', 'title', 'tag', 'created_date', 
-        		   'published_date', 'c_latitude', 'c_longitude']
+        		   'published_date', 'coordinates', 'c_latitude', 'c_longitude', 'address',]
 
 
 class PictureForm(forms.ModelForm):
