@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Picture
+from .models import Post, Picture, Review
 
 
 class AdvancedEditor(forms.Textarea):
@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
 
         model = Post
         fields =  ['author', 'title', 'tag', 'created_date', 
-        		   'published_date', 'coordinates', 'c_latitude', 'c_longitude', 'address',]
+        		   'published_date']
 
 
 class PictureForm(forms.ModelForm):
@@ -28,4 +28,15 @@ class PictureForm(forms.ModelForm):
         model = Picture
         fields =  ['author', 'title', 'created_date', 
                    'published_date', 'picture', 'comment']
+
+
+class ReviewForm(forms.ModelForm):
+
+    text = forms.CharField(widget=AdvancedEditor(), label='Содержание')
+
+    class Meta:
+
+        model = Review
+        fields =  ['author', 'title', 'tag', 'created_date', 
+                   'published_date', 'c_latitude', 'c_longitude', 'address']
 

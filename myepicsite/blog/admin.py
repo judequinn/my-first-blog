@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import Post, Picture
-from .forms import PostForm, PictureForm
+from .models import Post, Picture, Review
+from .forms import PostForm, PictureForm, ReviewForm
 import urllib.parse, urllib.request, json
 
 
-class WysiwygAdmin(admin.ModelAdmin):
+class MyReview(admin.ModelAdmin):
 
-	form = PostForm
+	form = ReviewForm
 	exclude = ('author',)
 
 	def save_model(self, request, obj, form, change):
@@ -20,9 +20,19 @@ class WysiwygAdmin(admin.ModelAdmin):
 			str_geocode_response = geocode_response.readall().decode('utf-8')
 			geocode = json.loads(str_geocode_response)
 			# Сохранение координат
-			obj.coordinates = geocode['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']
-			obj.c_latitude = float(geocode['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'].split()[1])
-			obj.c_longitude = float(geocode['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'].split()[0])
+			obj.c_latitude = geocode['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'].split()[1]
+			obj.c_longitude = geocode['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'].split()[0]
+		obj.save()
+
+
+class MyPost(admin.ModelAdmin):
+
+	form = PostForm
+	exclude = ('author',)
+
+	def save_model(self, request, obj, form, change):
+		if not change:
+			obj.author = request.user
 		obj.save()
 
 
@@ -36,5 +46,6 @@ class MyPicture(admin.ModelAdmin):
 			obj.author = request.user
 		obj.save()
 
-admin.site.register(Post, WysiwygAdmin)
+admin.site.register(Post, MyPost)
 admin.site.register(Picture, MyPicture)
+admin.site.register(Review, MyReview)
