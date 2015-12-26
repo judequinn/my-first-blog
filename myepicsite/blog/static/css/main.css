@@ -16,7 +16,7 @@ html, body {
 	height: 100%;
 }
 
-html, hmtl a{
+html a{
 	width:100%;
 	font-size: 100%; 
 	-webkit-text-size-adjust: 100%; 
@@ -203,6 +203,24 @@ pre code {
 .pre-scrollable {
   	overflow-y: scroll;
   	max-height: 340px;
+}
+
+/*===================================================
+   Map
+ ================================================= */
+
+#map {
+	float: left;
+	width: 78%;
+	height: 800px;
+	padding: 5px;
+}
+
+#map-menu {
+	float: left;
+	width: 20%;
+	height: 800px;
+	padding: 1px;
 }
 
 /* ==================================================

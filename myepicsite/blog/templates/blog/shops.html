@@ -1,48 +1,51 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
 {% block content %}
-
-
-
-
 <div class="page">
 	<div class="container">
-		<div id="map" style="width: 800px; height: 600px"></div>
-
-
-
+		<div id="map"></div>
+        <div id="map-menu">
+            {% for review in reviews %}
+            {% if review.c_latitude %}
+            <h4>{{ review.title }}</h4>
+            <p>{{ review.text|safe }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
 	</div>
 </div>
-
-<script type="text/javascript">
-    var map = new ymaps.Map("map", {
-            center: [55.76, 37.64], 
-            zoom: 11
-        });
-</script>
-
 <script type="text/javascript">
     ymaps.ready(init);
-    var myMap;
-
+    var myMap, myPlacemark;
     function init(){     
         myMap = new ymaps.Map("map", {
             center: [55.76, 37.64],
-            zoom: 11
+            zoom: 11,
+            controls: ['smallMapDefaultSet'],}, 
+            {
+            searchControlProvider: 'yandex#search'
         });
-
-        myPlacemark = new ymaps.Placemark([55.76, 37.64], { 
-            hintContent: 'Москва!', 
-            balloonContent: 'Столица России' 
+        {% for review in reviews %}
+        {% if review.c_latitude %}
+        {% if review.tag == 'shops' %}        
+        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
+            hintContent: '{{ review.title }}', 
+            balloonContent: '{{ review.text|safe }}' 
+        },
+        { preset: 'islands#orangeDotIcon' 
         });
-
         myMap.geoObjects.add(myPlacemark);
-
+        {% elif review.tag == 'cafes' %}
+        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
+            hintContent: '{{ review.title }}', 
+            balloonContent: '{{ review.text|safe }}' 
+        },
+        { preset: 'islands#blueDotIcon' 
+        });
+        myMap.geoObjects.add(myPlacemark);
+        {% endif %}
+        {% endif %}
+        {% endfor %}       
     }
 </script>
-
-
-
 {% endblock %}

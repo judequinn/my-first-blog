@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Post, Picture
+from .models import Post, Picture, Review
 
 
 def creative(request):  
@@ -33,5 +33,7 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-def shops(request): 
-    return render(request, 'blog/shops.html')
+
+def shops(request):
+    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/shops.html', {'reviews' : reviews})
