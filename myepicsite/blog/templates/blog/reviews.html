@@ -1,64 +1,132 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
 {% block content %}
 
-<!-- About Section -->
-<div id="about" class="page">
-<div class="container">  
-    <!-- People -->
-    <div class="row">
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'shops' %}'>Магазины</span>
-                </div>
-                <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
-            </div>
-            <!-- <h3 class="profile-name">John Doe</h3> -->
-            <!-- <p class="profile-description">Название раздела.</p> -->
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Map -->
+<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> <!-- jQuery Core -->
 
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Название раздела</span>
-                </div>
-                <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название">
-            </div>
-            <!-- <h3 class="profile-name">Jane Helf</h3> -->
-            <!-- <p class="profile-description">Здесь будет описание раздела, например.</p> -->
+<!-- Map Menu JS -->
+<script>
+$(document).ready(function() {
+    $(".review-list").hide();
+    $(".section").click(function() {
+        $(this).parent().find(".review-list").slideToggle('fast');
+    });
+    });
+</script>
 
-        </div>
-        <!-- End Profile -->
+<!-- Map JS -->
+<script type="text/javascript">
+
+    ymaps.ready(init);
+
+    function init(){ 
+
+        ymaps.load(['package.GeoObjectCollection']);
+
+        var myMap, myPlacemark, 
+        myCafes = new ymaps.GeoObjectCollection(),
+        myShops = new ymaps.GeoObjectCollection(),
+        myMuseums = new ymaps.GeoObjectCollection();
+
+        myMap = new ymaps.Map("map", {
+            center: [55.76, 37.64],
+            zoom: 11,
+            controls: ['smallMapDefaultSet'],}, 
+            {
+            searchControlProvider: 'yandex#search'
+        });
+
+        {% for review in reviews %}
+        {% if review.c_latitude %}
+        {% if review.tag == 'shops' %} 
+
+        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
+            hintContent: '{{ review.title }}', 
+            balloonContent: '{{ review.text|safe }}' 
+        },
+        { preset: 'islands#orangeDotIcon' 
+        });
+
+        myShops.add(myPlacemark);
+
+        {% elif review.tag == 'cafes' %}
+        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
+            hintContent: '{{ review.title }}', 
+            balloonContent: '{{ review.text|safe }}' 
+        },
+        { preset: 'islands#blueDotIcon' 
+        });
+        myCafes.add(myPlacemark);
+
+        {% elif review.tag == 'museums' %}
+        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
+            hintContent: '{{ review.title }}', 
+            balloonContent: '{{ review.text|safe }}' 
+        },
+        { preset: 'islands#redDotIcon' 
+        });
+        myMuseums.add(myPlacemark);
         
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Название раздела</span>
-                </div>
-                <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название">
-            </div>
-            <!-- <h3 class="profile-name">Joshua Insanus</h3> -->
-            <!-- <p class="profile-description">Можно и без него обойтись.</p> -->
-                
-        </div>
-        <!-- End Profile -->
-        
-    </div>
-    <!-- End People -->
+        {% endif %}
+        {% endif %}
+        {% endfor %} 
+
+        myMap.geoObjects.add(myShops);
+        myMap.geoObjects.add(myMuseums); 
+        myMap.geoObjects.add(myCafes);
+
+        $('#cafes').click(function(event){
+
+        myMap.geoObjects.add(myCafes);
+
+        }); 
+    };  
+</script>
+<!-- End Map JS -->
+
+<div class="page">
+    <div id="map-container" class="container"> <!-- Map container -->
+        <div id="map"> <!-- Map rendering here --> </div>
+        <div id="map-menu"> <!-- Map menu -->
+            <div> <!-- Cafes -->
+                <h3 class="section" id="cafes"><a>Кафе</a></h3>
+                <ul class="review-list">
+                    {% for review in reviews %}
+                    {% if review.c_latitude %}
+                    {% if review.tag == "cafes" %}
+                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div> <!-- Cafes -->
+            <div> <!-- Shops -->
+                <h3 class="section" id="shops"><a>Магазины</a></h3>
+                <ul class="review-list">
+                    {% for review in reviews %}
+                    {% if review.c_latitude %}
+                    {% if review.tag == "shops" %}
+                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div> <!-- Shops -->
+            <div> <!-- Museums -->
+                <h3 class="section" id="museums"><a>Музеи</a></h3>
+                <ul class="review-list">
+                    {% for review in reviews %}
+                    {% if review.c_latitude %}
+                    {% if review.tag == "museums" %}
+                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div> <!-- Museums -->
+        </div> <!-- Map menu -->
+    </div> <!-- Map container -->
 </div>
-</div>
-<!-- End About Section -->
 
 {% endblock %}

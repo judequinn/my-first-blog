@@ -13,11 +13,13 @@ def gallery(request):
 
 
 def reviews(request): 
-    return render(request, 'blog/reviews.html')
+    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/reviews.html', {'reviews' : reviews})
 
 
 def index(request):
-    return render(request, 'blog/index.html')
+    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/index.html', {'reviews' : reviews})
 
 
 def contact(request):
@@ -32,8 +34,3 @@ def accessories(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
-
-
-def shops(request):
-    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/shops.html', {'reviews' : reviews})

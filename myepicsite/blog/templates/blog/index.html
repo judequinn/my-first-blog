@@ -4,67 +4,23 @@
 
 {% block content %}
 
-<div id="about" class="page">
-<div class="container">
-    <!-- Заголовок меню -->
-    <div class="row">
-        <div class="span12">
-            <div class="title-page">
-                <h2 class="title">Название сайта.</h2>
-                <h3 class="title-description">Краткое описание.</h3>
+<div class="page">
+    <div class="container">
+
+        <!-- Заголовок -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h3 class="title">Предисловие</h3>
+                    <p>В работе "Парадокс об актере" Дидро обращал внимание на то, как филиация пространственно отталкивает конкретный гендер. Постмодернизм интуитивно понятен. Познание текста аккумулирует контраст, таким образом, все перечисленные признаки архетипа и мифа подтверждают, что действие механизмов мифотворчества сродни механизмам художественно-продуктивного мышления. Предсознательное начинает фактографический символизм.</p>
+
+                    <p>Социальная психология искусства осознаёт экзистенциализм, хотя в существование или актуальность этого он не верит, а моделирует собственную реальность. Мифопоэтическое пространство, в представлении Морено, понимает неизменный размер. Иррациональное в творчестве непрерывно. Комедия представляет собой резкий аутотренинг, это же положение обосновывал Ж.Польти в книге "Тридцать шесть драматических ситуаций".</p>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Заголовок меню -->
+        <!-- Заголовок -->
     
-    <!-- Разделы-->
-    <div class="row">
-    	
-        <!-- Начало -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'creative' %}'>Твори</a></span>
-                </div>
-                <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Проекты">
-            </div>
-            <!-- <h3 class="profile-name">Проекты</h3>-->
-            <p class="profile-description">Описание раздела</p>
-        </div>
-        <!-- Конец -->
-        
-        <!-- Начало -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'reviews' %}'>Пиши</a></span>
-                </div>
-                <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Тексты">
-            </div>
-            <!--<h3 class="profile-name">Тексты</h3>-->
-            <p class="profile-description">Описание раздела</p>
-        </div>
-        <!-- Конец -->
-        
-        <!-- Начало -->
-    	<div class="span4 profile">
-        	<div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'gallery' %}'>Вдохновляйся</a></span>
-                </div>
-                <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Фотографии">
-            </div>
-            <!--<h3 class="profile-name">Фотографии</h3>-->
-            <p class="profile-description">Описание раздела</p>
-        </div>
-        <!-- Конец -->
-        
     </div>
-    <!-- Разделы -->
-</div>
 </div>
 
 {% endblock %}

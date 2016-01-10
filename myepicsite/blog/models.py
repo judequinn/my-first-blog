@@ -48,7 +48,7 @@ class Picture(models.Model):
 # Обзоры
 class Review(models.Model):
 
-    SECTION_CHOICES = ( (None, 'Выбрать раздел'),('shops', 'Mагазины'), ('cafes', 'Кафе') )
+    SECTION_CHOICES = ( (None, 'Выбрать раздел'),('shops', 'Mагазины'), ('cafes', 'Кафе'), ('museums', 'Музеи') )
 
     author = models.ForeignKey('auth.User', verbose_name='Автор')
     title = models.CharField('Заголовок', max_length=200)
