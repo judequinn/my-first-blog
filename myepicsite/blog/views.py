@@ -14,7 +14,20 @@ def gallery(request):
 
 def reviews(request): 
     reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/reviews.html', {'reviews' : reviews})
+    sections = Review.SECTION_CHOICES
+    colors = ['blue', 'red']
+    dots = []
+    l = len(colors)
+    i = 0
+    for section in sections:
+        if section[0]:
+            if i >= l:
+                dots.append((section[1], colors[i-l], section[0]))
+            else:
+                dots.append((section[1], colors[i], section[0]))
+            i += 1
+
+    return render(request, 'blog/reviews.html', {'reviews' : reviews, 'dots' : dots})
 
 
 def index(request):

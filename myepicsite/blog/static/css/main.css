@@ -44,10 +44,16 @@ a{
 		    transition: color 0.1s linear 0s;
 }
 
-a:hover,
 a:active,
 a:focus{
 	outline: 0;
+	text-decoration: none;
+	color:#FFFFFF;
+}
+
+a:hover{
+	outline: 0;
+	text-decoration: none;
 	color:#30D5C8;
 }
 
@@ -230,6 +236,32 @@ pre code {
 .section {
 	margin: 15px 0px;
 }
+
+/* Map menu */
+
+.my-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.my-menu > li {
+	margin: 15px 0px;
+}
+.submenu {
+    list-style: none;
+    margin: 15px 10px 10px 20px;
+    padding: 0;
+}
+.submenu li {
+    font-size: 90%;
+}
+
+.group-name {
+	font-size:24px;
+	margin: 10px;
+}
+
 
 /* ==================================================
    Typography

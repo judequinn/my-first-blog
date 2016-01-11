@@ -37,6 +37,6 @@ class ReviewForm(forms.ModelForm):
     class Meta:
 
         model = Review
-        fields =  ['author', 'title', 'tag', 'created_date', 
-                   'published_date', 'c_latitude', 'c_longitude', 'address']
+        fields =  ['author', 'title', 'tag', 
+                   'published_date', 'address', 'position']
 

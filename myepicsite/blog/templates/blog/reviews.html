@@ -1,132 +1,105 @@
 {% extends 'blog/base_menu.html' %}
 {% load staticfiles %}
+{% load replace_commas %}
 {% block content %}
 
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Map -->
-<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> <!-- jQuery Core -->
-
-<!-- Map Menu JS -->
+<!-- Yandex JQuery -->
+<script src="//yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<!-- Yandex Maps API -->
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script>
-$(document).ready(function() {
-    $(".review-list").hide();
-    $(".section").click(function() {
-        $(this).parent().find(".review-list").slideToggle('fast');
-    });
-    });
+// Группы объектов
+var groups = [
+        {% for dot in dots %}
+        {
+            name: "{{ dot.0 }}",
+            style: "islands#{{ dot.1 }}Icon",
+            items: [
+                {% for review in reviews %}
+                {% if review.position.latitude and review.position.longitude %}
+                {% if review.tag == dot.2 %}
+                {
+                    center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
+                    name: "{{ review.title }}"
+                },
+                {% endif %}
+                {% endif %}
+                {% endfor %} 
+            ]},
+        {% endfor %}
+        ];
 </script>
-
-<!-- Map JS -->
 <script type="text/javascript">
-
     ymaps.ready(init);
-
     function init(){ 
-
-        ymaps.load(['package.GeoObjectCollection']);
-
-        var myMap, myPlacemark, 
-        myCafes = new ymaps.GeoObjectCollection(),
-        myShops = new ymaps.GeoObjectCollection(),
-        myMuseums = new ymaps.GeoObjectCollection();
-
-        myMap = new ymaps.Map("map", {
+        var myMap = new ymaps.Map("map", {
             center: [55.76, 37.64],
             zoom: 11,
-            controls: ['smallMapDefaultSet'],}, 
+            controls: ['smallMapDefaultSet'],
+        }, 
             {
             searchControlProvider: 'yandex#search'
-        });
+        }),
+        menu = $('<ul class="my-menu"/>');
+        for (var i = 0, l = groups.length; i < l; i++) {
+            createMenuGroup(groups[i]);
+        }
+        function createMenuGroup (group) {
+            // Пункт меню.
+            var menuItem = $('<li><a class="group-name" href="#">' + group.name + '</a></li>'),
+            // Коллекция для геообъектов группы.
+                collection = new ymaps.GeoObjectCollection(null, { preset: group.style }),
+            // Контейнер для подменю.
+                submenu = $('<ul class="submenu"></ul>');
+            // Добавляем коллекцию на карту.
+            myMap.geoObjects.add(collection);
+            // Добавляем подменю.
+            menuItem
+                .append(submenu)
+                // Добавляем пункт в меню.
+                .appendTo(menu)
+                // По клику удаляем/добавляем коллекцию на карту и скрываем/отображаем подменю.
+                .find('a')
+                .click(function() {
+                    $(this).parent().find(".submenu").toggle();
+                        if($(this).parent().find(".submenu").is(":visible")) {
+                            myMap.geoObjects.add(collection);
+                        } else { 
+                            myMap.geoObjects.remove(collection);
+                        }
+                });
+        for (var j = 0, m = group.items.length; j < m; j++) {
+            createSubMenu(group.items[j], collection, submenu);
+        }
+        }
+        function createSubMenu (item, collection, submenu) {
+            // Пункт подменю.
+            var submenuItem = $('<li><a href="#">' + item.name + '</a></li>'),
+            // Создаем метку.
+                placemark = new ymaps.Placemark(item.center, { balloonContent: item.name });
+            // Добавляем метку в коллекцию.
+            collection.add(placemark);
+            // Добавляем пункт в подменю.
+            submenuItem
+                .appendTo(submenu)
+                // При клике по пункту подменю открываем/закрываем баллун у метки.
+                .find('a')
 
-        {% for review in reviews %}
-        {% if review.c_latitude %}
-        {% if review.tag == 'shops' %} 
+                .click(function () {
 
-        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
-            hintContent: '{{ review.title }}', 
-            balloonContent: '{{ review.text|safe }}' 
-        },
-        { preset: 'islands#orangeDotIcon' 
-        });
-
-        myShops.add(myPlacemark);
-
-        {% elif review.tag == 'cafes' %}
-        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
-            hintContent: '{{ review.title }}', 
-            balloonContent: '{{ review.text|safe }}' 
-        },
-        { preset: 'islands#blueDotIcon' 
-        });
-        myCafes.add(myPlacemark);
-
-        {% elif review.tag == 'museums' %}
-        myPlacemark = new ymaps.Placemark([{{ review.c_latitude }}, {{ review.c_longitude }}], { 
-            hintContent: '{{ review.title }}', 
-            balloonContent: '{{ review.text|safe }}' 
-        },
-        { preset: 'islands#redDotIcon' 
-        });
-        myMuseums.add(myPlacemark);
-        
-        {% endif %}
-        {% endif %}
-        {% endfor %} 
-
-        myMap.geoObjects.add(myShops);
-        myMap.geoObjects.add(myMuseums); 
-        myMap.geoObjects.add(myCafes);
-
-        $('#cafes').click(function(event){
-
-        myMap.geoObjects.add(myCafes);
-
-        }); 
-    };  
+                    placemark.balloon.open();
+                });
+        }
+        // Добавляем меню в тэг BODY.
+        menu.appendTo($('#map-menu'));
+        // Выставляем масштаб карты чтобы были видны все группы.
+        myMap.setBounds(myMap.geoObjects.getBounds());
+}
 </script>
-<!-- End Map JS -->
-
 <div class="page">
-    <div id="map-container" class="container"> <!-- Map container -->
-        <div id="map"> <!-- Map rendering here --> </div>
-        <div id="map-menu"> <!-- Map menu -->
-            <div> <!-- Cafes -->
-                <h3 class="section" id="cafes"><a>Кафе</a></h3>
-                <ul class="review-list">
-                    {% for review in reviews %}
-                    {% if review.c_latitude %}
-                    {% if review.tag == "cafes" %}
-                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </div> <!-- Cafes -->
-            <div> <!-- Shops -->
-                <h3 class="section" id="shops"><a>Магазины</a></h3>
-                <ul class="review-list">
-                    {% for review in reviews %}
-                    {% if review.c_latitude %}
-                    {% if review.tag == "shops" %}
-                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </div> <!-- Shops -->
-            <div> <!-- Museums -->
-                <h3 class="section" id="museums"><a>Музеи</a></h3>
-                <ul class="review-list">
-                    {% for review in reviews %}
-                    {% if review.c_latitude %}
-                    {% if review.tag == "museums" %}
-                    <li><a href="#">{{ review.title }} ({{ review.address }})</a></li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </div> <!-- Museums -->
-        </div> <!-- Map menu -->
-    </div> <!-- Map container -->
+    <div id="map-container" class="container">
+        <div id="map"> <!-- Map  --> </div>
+        <div id="map-menu"> <!-- Menu --> </div>
+    </div>
 </div>
-
 {% endblock %}

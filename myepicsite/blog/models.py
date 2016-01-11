@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from sorl.thumbnail import ImageField
 
+from geoposition.fields import GeopositionField
+
 
 # Посты
 class Post(models.Model):
@@ -54,9 +56,8 @@ class Review(models.Model):
     title = models.CharField('Заголовок', max_length=200)
     text = models.TextField('Текст поста', blank=True, null=True)
     tag = models.CharField('Раздел', max_length=50, choices=SECTION_CHOICES)
-    address = models.CharField('Адрес', max_length=300, blank=True, null=True)
-    c_latitude = models.CharField('Широта', max_length=50, blank=True, null=True)
-    c_longitude = models.CharField('Долгота', max_length=50, blank=True, null=True)
+    address = models.CharField('Адрес (сохраняется автоматически)', max_length=300, blank=True, null=True)
+    position = GeopositionField('Координаты')
     created_date = models.DateTimeField('Дата создания', default=timezone.now)
     published_date = models.DateTimeField('Дата публикации', blank=True, null=True)
 
