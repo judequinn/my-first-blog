@@ -54,3 +54,7 @@ def accessories(request):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
+
+def review_detail(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    return render(request, 'blog/review_detail.html', {'review': review})

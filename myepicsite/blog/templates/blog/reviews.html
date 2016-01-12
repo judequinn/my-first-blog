@@ -21,7 +21,8 @@ var groups = [
                 {% if review.tag == dot.2 %}
                 {
                     center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
-                    name: "{{ review.title }}"
+                    name: "{{ review.title }} ({{ review.address }})",
+                    url: "{% url 'review_detail' pk=review.pk %}"
                 },
                 {% endif %}
                 {% endif %}
@@ -79,7 +80,7 @@ var groups = [
             // Пункт подменю.
             var submenuItem = $('<li><a href="#">' + item.name + '</a></li>'),
             // Создаем метку.
-                placemark = new ymaps.Placemark(item.center, { balloonContent: item.name });
+                placemark = new ymaps.Placemark(item.center, { balloonContentBody: ('<a target="_blank" href="' + item.url + '">' + item.name + '</a>') });
             // Добавляем метку в коллекцию.
             collection.add(placemark);
             // Добавляем пункт в подменю.
