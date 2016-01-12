@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'sorl.thumbnail',
+    'geoposition',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,7 +122,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-# Media
+# Media files
 
 MEDIA_URL = '/media/'
 
@@ -130,3 +131,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 FILEBROWSER_DIRECTORY = MEDIA_ROOT
 
 # TINYMCE_FILEBROWSER = True 
+
+# Google map options
+
+GEOPOSITION_MAP_OPTIONS = {
+    'center': {'lat': 55.76, 'lng': 37.64},
+    'zoom' : 11,
+    'scrollwheel': 'true',
+}
+
+GEOPOSITION_MARKER_OPTIONS = {
+    'cursor': 'move',
+}
+
+GEOPOSITION_MAP_WIDGET_HEIGHT = 600

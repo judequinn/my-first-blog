@@ -1,7 +1,6 @@
 jQuery(function($){
 
 var BRUSHED = window.BRUSHED || {};
-console.log(BRUSHED);
 
 /* ==================================================
    Mobile Navigation

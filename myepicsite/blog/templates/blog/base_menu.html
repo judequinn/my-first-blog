@@ -1,5 +1,4 @@
 {% load staticfiles %}
-
 <!DOCTYPE html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
@@ -12,69 +11,49 @@
     #wrap {display:table;height:100%}
   </style>
 <![endif]-->
-
 <html lang="en-US"> <!--<![endif]-->
-
 <head>
-
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
 <title>The Blog</title>   
-
 <meta name="description" content="Insert Your Site Description" /> 
-
 <!-- Mobile Specifics -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="HandheldFriendly" content="true"/>
 <meta name="MobileOptimized" content="320"/>   
-
 <!-- Mobile Internet Explorer ClearType Technology -->
 <!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
-
 <!-- Bootstrap -->
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
 <!-- Main Style -->
 <link href="{% static 'css/main.css' %}" rel="stylesheet">
-
 <!-- Supersized -->
 <link href="{% static 'css/supersized.css' %}" rel="stylesheet">
 <link href="{% static 'css/supersized.shutter.css' %}" rel="stylesheet">
-
 <!-- FancyBox -->
 <link href="{% static 'css/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
-
 <!-- Font Icons -->
 <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
-
 <!-- Shortcodes -->
 <link href="{% static 'css/shortcodes.css' %}" rel="stylesheet">
-
 <!-- Responsive -->
 <link href="{% static 'css/bootstrap-responsive.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-
 <!-- Supersized -->
 <link href="{% static 'css/supersized.css' %}" rel="stylesheet">
 <link href="{% static 'css/supersized.shutter.css' %}" rel="stylesheet">
-
 <!-- Google Font -->
 <link href='https://fonts.googleapis.com/css?family=Exo+2:300,200,200italic,300italic,800italic,700,400,400italic,600italic,700italic,900,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-
 <!-- Fav Icon -->
 <link rel="shortcut icon" href="#">
 <link rel="apple-touch-icon" href="#">
 <link rel="apple-touch-icon" sizes="114x114" href="#">
 <link rel="apple-touch-icon" sizes="72x72" href="#">
 <link rel="apple-touch-icon" sizes="144x144" href="#">
-
 <!-- Modernizr -->
 <script src="{% static 'js/modernizr.js' %}"></script>
-
 <!-- Analytics -->
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'Insert Your Code']);
   _gaq.push(['_trackPageview']);
@@ -84,17 +63,10 @@
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
 <!-- End Analytics -->
-
-<!-- Yandex Maps -->
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-
 </head>
-
 <body>
-
 <div id="wrap">
   <!-- Header -->
   <header>
@@ -114,21 +86,16 @@
       </div>
   </header>
   <!-- End Header -->
-
   <div id="main">
-
     {% block content %}
     {% endblock %}
-
   </div>
 </div>
-
 <!-- Footer -->
 <footer id="bottom">
 	<p class="credits">&copy;2015 Копирайт.</p>
 </footer>
 <!-- End Footer -->
-
 <!-- Js -->
 <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> <!-- jQuery Core -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script> <!-- Bootstrap -->
@@ -141,11 +108,9 @@
 <script src="{% static 'js/jquery.tweet.js' %}"></script> <!-- Tweet -->
 <script src="{% static 'js/plugins.js' %}"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
 <script src="{% static 'js/main.js' %}"></script> <!-- Default JS -->
-
 <!-- Placeholder -->
 <script type="text/javascript">
   $(document).ready(function(){
-
   Modernizr.load([
   {
     test: Modernizr.placeholder,
@@ -165,6 +130,5 @@
   });
 </script>
 <!-- End Js -->
-
 </body>
 </html>
