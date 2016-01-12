@@ -14,8 +14,15 @@ def gallery(request):
 
 def reviews(request): 
     reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    # Список разделов
     sections = Review.SECTION_CHOICES
-    colors = ['blue', 'red']
+    # Набор цветов для меток на карте
+    colors = ['blue', 'red', 'green', 'yellow', 'darkOrange',
+                'night', 'darkBlue', 'pink', 'gray',
+                'brown', 'darkGreen', 'violet', 'black',  
+                'orange', 'lightBlue', 'olive',
+             ]
+    # Соотнесение раздела, цвета и тэга
     dots = []
     l = len(colors)
     i = 0

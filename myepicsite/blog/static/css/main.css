@@ -216,21 +216,22 @@ pre code {
 
 #map {
 	float: left;
-	width: 60%;
+	width: 65%;
 	height: 800px;
 	padding: 5px;
+	padding-left: 3%;
 }
 
 #map-menu {
 	float: left;
-	width: 35%;
+	width: 30%;
 	height: 800px;
 	padding: 1px;
-	padding-left: 3%;
+	padding-left: 1%;
 }
 
 #map-container {
-	width: 80%;
+	width: 70%;
 }
 
 .section {
