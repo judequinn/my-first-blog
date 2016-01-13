@@ -1,41 +1,11 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
-{% load thumbnail %}
-
 {% block content %}
-
 <div id="work" class="page">
     <div class="container">     
-	    <div class="post">
-
-			<div>
-				{% if user.is_authenticated %}
-				<a href="{% url 'post_edit' pk=post.pk %}"><button class="btn btn-default">Редактировать пост</button></a>
-				{% endif %}
-	            <p class="published-date">{{ post.published_date|date:"d E Y" }}</p>
-	            	<h3><a href="">{{ post.title }}</a></h3>
-
-	            		{{ post.text|linebreaks }}
-		            	
-		            	{% for image in post.picture_set.all %}
-
-		            	<div class="margin-bottom-percents">
-		            	
-		            		{% thumbnail image.picture "x600" crop="center" as im %}
-		                        <a href='{{ MEDIA_URL }}{{ image.picture }}'><img src="{{ im.url }}" alt="{{ image.comment }}"></a>
-		                    {% endthumbnail %}
-
-		            		<p>{{ image.comment|linebreaks }}</p>
-
-		            	</div>
-
-		            	{% endfor %}
-		        
-	        </div>
-	    </div>
+    	<h2>{{ post.title }}</h2>
+    	<p class="published-date">Дата публикации: {{ post.published_date|date:"d E Y" }}</p>
+    	{{ post.text|safe|linebreaks }}
 	</div>
 </div>	
-
 {% endblock %}

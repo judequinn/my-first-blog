@@ -1,61 +1,56 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
 {% block content %}
-
-<!-- About Section -->
 <div class="page">
-<div id="container-creative" class="container">  
-    <!-- People -->
-    <div class="row">
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb"><a href='{% url 'accessories' %}'>Аксессуары</a></span>
+    <div id="container-creative" class="container">  
+        <div class="row">
+            <!-- Раздел -->
+            <div class="span4 profile">
+                <div class="image-wrap">
+                    <div class="hover-wrap">
+                        <span class="overlay-img"></span>
+                        <span class="overlay-text-thumb"><a href='{% url 'accessories' %}'>Аксессуары</a></span>
+                    </div>
+                    <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
                 </div>
-                <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
+                <h3>Аксессуары</h3>
+                        <ul>
+                        {% for post in posts %}
+                        {% if post.published_date %}
+                        {% if post.tag == 'accessories' %}
+                        <li><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        </ul>
             </div>
-            <!-- <h3 class="profile-name">John Doe</h3> -->
-            <!-- <p class="profile-description">Название раздела.</p> -->
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Название раздела</span>
+            <!-- Раздел -->
+            <!-- Раздел -->
+            <div class="span4 profile">
+                <div class="image-wrap">
+                    <div class="hover-wrap">
+                        <span class="overlay-img"></span>
+                        <span class="overlay-text-thumb">Название раздела</span>
+                    </div>
+                    <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название">
                 </div>
-                <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название">
+                <!-- <p class="profile-description">Здесь будет описание раздела, например.</p> -->
             </div>
-            <!-- <h3 class="profile-name">Jane Helf</h3> -->
-            <!-- <p class="profile-description">Здесь будет описание раздела, например.</p> -->
-        </div>
-        <!-- End Profile -->
-        
-        <!-- Start Profile -->
-        <div class="span4 profile">
-            <div class="image-wrap">
-                <div class="hover-wrap">
-                    <span class="overlay-img"></span>
-                    <span class="overlay-text-thumb">Название раздела</span>
+            <!-- Раздел -->
+            <!-- Раздел -->
+            <div class="span4 profile">
+                <div class="image-wrap">
+                    <div class="hover-wrap">
+                        <span class="overlay-img"></span>
+                        <span class="overlay-text-thumb">Название раздела</span>
+                    </div>
+                    <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название">
                 </div>
-                <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название">
+                <!-- <p class="profile-description">Можно и без него обойтись.</p> -->
             </div>
-            <!-- <h3 class="profile-name">Joshua Insanus</h3> -->
-            <!-- <p class="profile-description">Можно и без него обойтись.</p> -->
+            <!-- Раздел -->
         </div>
-        <!-- End Profile -->
-        
     </div>
-    <!-- End People -->
 </div>
-</div>
-<!-- End About Section -->
 
 {% endblock %}

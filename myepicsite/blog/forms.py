@@ -17,7 +17,7 @@ class PostForm(forms.ModelForm):
     class Meta:
 
         model = Post
-        fields =  ['author', 'title', 'tag', 'created_date', 
+        fields =  ['author', 'title', 'tag', 
         		   'published_date']
 
 
@@ -26,7 +26,7 @@ class PictureForm(forms.ModelForm):
     class Meta:
 
         model = Picture
-        fields =  ['author', 'title', 'created_date', 
+        fields =  ['author', 'title', 
                    'published_date', 'picture', 'comment']
 
 
@@ -39,4 +39,3 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields =  ['author', 'title', 'tag', 
                    'published_date', 'address', 'position']
-
