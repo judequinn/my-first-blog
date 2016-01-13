@@ -1,0 +1,11 @@
+{% extends 'blog/base_menu.html' %}
+{% load staticfiles %}
+{% block content %}
+<div id="work" class="page">
+    <div class="container">     
+        <h2>{{ review.title }}</h2>
+        <p class="published-date">Дата публикации: {{ review.published_date|date:"d E Y" }}</p>
+        <p>{{ review.text|safe|linebreaks }}</p>
+	</div>
+</div>
+{% endblock %}

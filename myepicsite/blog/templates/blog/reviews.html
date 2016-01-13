@@ -2,12 +2,9 @@
 {% load staticfiles %}
 {% load replace_commas %}
 {% block content %}
-
-<!-- Yandex JQuery -->
-<script src="//yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-<!-- Yandex Maps API -->
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-
+<script src="//yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> <!-- Yandex JQuery -->
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Maps API -->
+<script src="{% static 'js/map.js' %}"></script>
 <script>
 // Группы объектов
 var groups = [
@@ -21,7 +18,10 @@ var groups = [
                 {% if review.tag == dot.2 %}
                 {
                     center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
-                    name: "{{ review.title }}"
+                    name: "{{ review.title }} ({{ review.address }})",
+                    url: "{% url 'review_detail' pk=review.pk %}",
+                    head: "{{ review.title }}",
+                    body: "{{ review.address }}"
                 },
                 {% endif %}
                 {% endif %}
@@ -30,77 +30,12 @@ var groups = [
         {% endfor %}
         ];
 </script>
-<script type="text/javascript">
-    ymaps.ready(init);
-    function init(){ 
-        var myMap = new ymaps.Map("map", {
-            center: [55.76, 37.64],
-            zoom: 11,
-            controls: ['smallMapDefaultSet'],
-        }, 
-            {
-            searchControlProvider: 'yandex#search'
-        }),
-        menu = $('<ul class="my-menu"/>');
-        for (var i = 0, l = groups.length; i < l; i++) {
-            createMenuGroup(groups[i]);
-        }
-        function createMenuGroup (group) {
-            // Пункт меню.
-            var menuItem = $('<li><a class="group-name" href="#">' + group.name + '</a></li>'),
-            // Коллекция для геообъектов группы.
-                collection = new ymaps.GeoObjectCollection(null, { preset: group.style }),
-            // Контейнер для подменю.
-                submenu = $('<ul class="submenu"></ul>');
-            // Добавляем коллекцию на карту.
-            myMap.geoObjects.add(collection);
-            // Добавляем подменю.
-            menuItem
-                .append(submenu)
-                // Добавляем пункт в меню.
-                .appendTo(menu)
-                // По клику удаляем/добавляем коллекцию на карту и скрываем/отображаем подменю.
-                .find('a')
-                .click(function() {
-                    var thisList = $(this).parent().find(".submenu");
-                    thisList.slideToggle('fast', function() {
-                        if(thisList.is(":visible")) {
-                            myMap.geoObjects.add(collection);  
-                        } else { 
-                            myMap.geoObjects.remove(collection);
-                        }
-                    });
-                });
-        for (var j = 0, m = group.items.length; j < m; j++) {
-            createSubMenu(group.items[j], collection, submenu);
-        }
-        }
-        function createSubMenu (item, collection, submenu) {
-            // Пункт подменю.
-            var submenuItem = $('<li><a href="#">' + item.name + '</a></li>'),
-            // Создаем метку.
-                placemark = new ymaps.Placemark(item.center, { balloonContent: item.name });
-            // Добавляем метку в коллекцию.
-            collection.add(placemark);
-            // Добавляем пункт в подменю.
-            submenuItem
-                .appendTo(submenu)
-                // При клике по пункту подменю открываем/закрываем баллун у метки.
-                .find('a')
-                .click(function () {
-                    placemark.balloon.open();
-                });
-        }
-        // Добавляем меню в тэг BODY.
-        menu.appendTo($('#map-menu'));
-        // Выставляем масштаб карты чтобы были видны все группы.
-        myMap.setBounds(myMap.geoObjects.getBounds());
-}
-</script>
 <div class="page">
     <div id="map-container" class="container">
-        <div id="map"> <!-- Map  --> </div>
-        <div id="map-menu"> <!-- Menu --> </div>
+        <div class="row">
+            <div class="span9" id="map"> <!-- Map  --> </div>
+            <div class="span5" id="map-menu"> <!-- Menu --> </div>
+        </div>
     </div>
 </div>
 {% endblock %}

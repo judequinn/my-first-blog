@@ -16,14 +16,14 @@ html, body {
 	height: 100%;
 }
 
-html a{
+html a {
 	width:100%;
 	font-size: 100%; 
 	-webkit-text-size-adjust: 100%; 
 	-ms-text-size-adjust: 100%;
 }
 
-body{
+body {
 	background:#2F3238;
 	color:#7F8289;
 	font-weight:300;
@@ -32,8 +32,7 @@ body{
 	line-height:28px;
 }
 
-
-a{
+a {
 	color:#FFFFFF;
 	text-decoration: none;
 	cursor: pointer;
@@ -44,17 +43,17 @@ a{
 		    transition: color 0.1s linear 0s;
 }
 
-a:active,
-a:focus{
-	outline: 0;
-	text-decoration: none;
-	color:#FFFFFF;
-}
-
-a:hover{
+a:hover {
 	outline: 0;
 	text-decoration: none;
 	color:#30D5C8;
+}
+
+a:active,
+a:focus {
+	outline: 0;
+	text-decoration: none;
+	color:#FFFFFF;
 }
 
 a img {
@@ -66,8 +65,7 @@ a > img {
 }
 
 img {
-	max-width: none;
-	width: 70%;	
+	max-width: 100%;
 }
 
 strong {
@@ -75,7 +73,7 @@ strong {
 }
 
 p {
-	margin: 0 0 30px;
+	margin: 0;
 }
 
 hr {
@@ -152,9 +150,6 @@ textarea::-webkit-input-placeholder {
   color: #7F8289;
 }
 
-.published-date {
-	text-align: right;
-}
 
 /* ==================================================
    Code and Pre
@@ -210,32 +205,52 @@ pre code {
   	max-height: 340px;
 }
 
+
 /*===================================================
-   Map
+   Map Section & Reviews
  ================================================= */
 
 #map {
-	float: left;
-	width: 65%;
-	height: 800px;
-	padding: 5px;
-	padding-left: 3%;
+	height:80vh;
+	min-height: 400px;
+	width: 50%;
+	min-width: 600px;
 }
 
 #map-menu {
-	float: left;
+	height: auto;
 	width: 30%;
-	height: 800px;
-	padding: 1px;
-	padding-left: 1%;
 }
 
 #map-container {
-	width: 70%;
+	width: 95%;
 }
 
 .section {
 	margin: 15px 0px;
+}
+
+/* Balloons */
+
+.balloon-link,
+.balloon-link:active,
+.balloon-link:focus {
+	color: #CF4E5B;
+	text-decoration: underline;
+}
+
+.balloon-link:hover {
+	color: #30D5C8;
+	text-decoration: underline;
+}
+
+.balloon-p {
+	color: #2F3238;
+	margin: 3px 0px;
+}
+
+.balloon-h5 {
+	margin: 3px 0px;
 }
 
 /* Map menu */
@@ -263,6 +278,18 @@ pre code {
 	margin: 10px;
 }
 
+/* Review Detail */
+
+.published-date {
+	text-align: left;
+}
+
+/* Creative */
+
+#container-creative {
+	margin-top: 5%;
+}
+
 
 /* ==================================================
    Typography
@@ -274,7 +301,7 @@ h3,
 h4,
 h5,
 h6{
-	margin:0 0 20px 0;
+	margin:0 0 10px 0;
 	color:#FFFFFF;
 	font-weight:300;
 	font-family: 'Exo 2', sans-serif;
@@ -362,6 +389,7 @@ h3.spec {
 .margin-bottom-percents {
 	margin-bottom: 5%;
 }
+
 
 /* ==================================================
    Home Slider
@@ -631,7 +659,7 @@ nav#menu #menu-nav li.current a,
 nav#menu #menu-nav li a:hover {
 	color: #30D5C8;
 }
-
+ 
 
 /* ==================================================
    Mobile Navigation
@@ -719,7 +747,7 @@ nav#menu #menu-nav li a:hover {
 
 .title-page {
 	text-align: left;
-	margin-top: 20%;	
+	margin-top: 15%;	
 }
 
 .title-page .title {
