@@ -56,6 +56,6 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
-def review_detail(request, pk):
-    review = get_object_or_404(Review, pk=pk)
+def review_detail(request, slug):
+    review = get_object_or_404(Review, slug=slug)
     return render(request, 'blog/review_detail.html', {'review': review})

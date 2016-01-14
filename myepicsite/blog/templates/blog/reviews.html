@@ -2,9 +2,7 @@
 {% load staticfiles %}
 {% load replace_commas %}
 {% block content %}
-<script src="//yandex.st/jquery/1.6.4/jquery.min.js" type="text/javascript"></script> <!-- Yandex JQuery -->
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Maps API -->
-<script src="{% static 'js/map.js' %}"></script>
 <script>
 // Группы объектов
 var groups = [
@@ -19,7 +17,7 @@ var groups = [
                 {
                     center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
                     name: "{{ review.title }} ({{ review.address }})",
-                    url: "{% url 'review_detail' pk=review.pk %}",
+                    url: "{% url 'review_detail' slug=review.slug %}",
                     head: "{{ review.title }}",
                     body: "{{ review.address }}"
                 },

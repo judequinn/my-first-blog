@@ -8,6 +8,7 @@ class MyReview(admin.ModelAdmin):
 
 	form = ReviewForm
 	exclude = ('author',)
+	prepopulated_fields = {"slug": ("title",)}
 
 	def save_model(self, request, obj, form, change):
 		if not change:

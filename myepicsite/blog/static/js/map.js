@@ -60,7 +60,7 @@ function init(){
             .find('a')
             .click(function () {
                 myMap.panTo(item.center, {
-                    flying: true,
+                    flying: 0,
                     duration: 500
                 });
                 if ( !placemark.balloon.isOpen() ) {
