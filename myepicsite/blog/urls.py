@@ -10,7 +10,7 @@ urlpatterns = [
     url(r'^index$', views.index, name='index'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^creative/accessories$', views.accessories, name='accessories'),
-    url(r'^post/(?P<pk>[0-9]+)/$', views.post_detail, name='post_detail'),
-    url(r'^review/(?P<slug>[-\w]+)/$', views.review_detail, name='review_detail'),
+    url(r'^creative/accessories/(?P<slug>[-\w]+)/$', views.post_detail, name='post_detail'),
+    url(r'^reviews/(?P<slug>[-\w]+)/$', views.review_detail, name='review_detail'),
     
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from .models import Post, Picture, Review
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def creative(request):
@@ -47,12 +48,23 @@ def contact(request):
 
 
 def accessories(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date') 
+
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    paginator = Paginator(post_list, 10) # Показать по 10 постов на странице
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # Если номер страницы не целое число, показать первую страницу
+        posts = paginator.page(1)
+    except EmptyPage:
+        # Если номер страница не существует, показать последнюю страницу
+        posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/accessories.html', {'posts' : posts})
 
 
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 

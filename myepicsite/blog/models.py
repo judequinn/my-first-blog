@@ -13,6 +13,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User', verbose_name='Автор')
     title = models.CharField('Заголовок', max_length=200)
     text = models.TextField('Текст поста', blank=True, null=True)
+    slug = models.SlugField('Слаг', max_length=60, blank=True, unique=True)
     tag = models.CharField('Раздел', max_length=50, choices=SECTION_CHOICES)
     created_date = models.DateTimeField('Дата создания', default=timezone.now)
     published_date = models.DateTimeField('Дата публикации', blank=True, null=True)
@@ -72,9 +73,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
-
-    """def save(self, *args, **kwargs):
-        if not self.id:
-            #Only set the slug when the object is created.
-            self.slug = slugify(self.title)
-        super(Review, self).save(*args, **kwargs)"""

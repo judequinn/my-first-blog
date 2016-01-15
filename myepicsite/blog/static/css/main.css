@@ -278,10 +278,42 @@ pre code {
 	margin: 10px;
 }
 
-/* Review Detail */
+/* Review & Post Detail */
 
-.published-date {
-	text-align: left;
+.single-post {
+	border-top: 1px solid gray;
+	margin-bottom: 35px;
+	padding-top: 15px;
+}
+
+.single-post#post-detail {
+	border: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.post-header {
+	overflow: hidden
+}
+.post-published-date {
+	color: #FFFFFF;
+	margin: 15px;
+	position: relative;
+	float: left;
+	width: 20%;
+	text-align: right;
+	font-size: 11pt;
+}
+
+.post-title {
+	margin: 15px 5px;
+	position: relative;
+	float: left;
+	width: 75%;
+}
+
+.post-text {
+	width: 85%;
 }
 
 /* Creative */
