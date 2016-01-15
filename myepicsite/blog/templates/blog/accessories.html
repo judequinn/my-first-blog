@@ -1,28 +1,46 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
 {% block content %}
-
-
 <div class="page">
 	<div class="container">
-
 		{% for post in posts %}
 		{% if post.published_date %}
 		{% if post.tag == 'accessories' %}
-		<!-- Если пост опубликован и расположен в разделе "Аксессуары" -->	
-					
-        <h3><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a></h3>
-
-
+    	<div class="single-post">
+	    	<div class="post-header">
+		    	<div class="post-title">
+		    		<h3><a href='{% url 'post_detail' slug=post.slug %}'>{{ post.title }}</a></h3>
+		    	</div>
+		    	<div class="post-published-date">
+		    		<p>Дата публикации: {{ post.published_date|date:"d E Y" }}</p>
+		    	</div>
+		    </div>
+	    	<div class="post-text">
+	    		{{ post.text|safe|linebreaks }}
+	    	</div>
+	    </div>
 		{% endif %}
 		{% endif %}
 		{% endfor %}
-
+		{% if posts.paginator.num_pages > 1 %}
+		<div class="pagination">
+    		<span class="step-links">
+		        {% if posts.has_previous %}
+		            <a href="?page={{ posts.previous_page_number }}">←</a>
+		        {% endif %}
+			    {% for num in posts.paginator.page_range %}
+			        {% if num == posts.number %}
+			            <span class="current"><b>{{ num }}</b></span>
+			        {% else %}
+			            <a href="?page={{ num }}"> {{ num }}</a>
+			        {% endif %} 
+			    {% endfor %}
+		        {% if posts.has_next %}
+		            <a href="?page={{ posts.next_page_number }}">→</a>
+		        {% endif %}
+		    </span>
+		</div>
+		{% endif %}	
 	</div>
 </div>
-
-
-
 {% endblock %}

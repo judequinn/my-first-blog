@@ -13,30 +13,19 @@
                     </div>
                     <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
                 </div>
-                <h3>Аксессуары</h3>
-                        <ul>
-                        {% for post in posts %}
-                        {% if post.published_date %}
-                        {% if post.tag == 'accessories' %}
-                        <li><a href='{% url 'post_detail' pk=post.pk %}'>{{ post.title }}</a>
-                        {% endif %}
-                        {% endif %}
-                        {% endfor %}
-                        </ul>
+                <p class="profile-description">Описание раздела.</p>
             </div>
-            <!-- Раздел -->
             <!-- Раздел -->
             <div class="span4 profile">
                 <div class="image-wrap">
                     <div class="hover-wrap">
                         <span class="overlay-img"></span>
-                        <span class="overlay-text-thumb">Название раздела</span>
+                        <span class="overlay-text-thumb"><a href='{% url 'accessories' %}'>Тестовый раздел</a></span>
                     </div>
                     <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название">
                 </div>
-                <!-- <p class="profile-description">Здесь будет описание раздела, например.</p> -->
+                <p class="profile-description">Описание раздела.</p>
             </div>
-            <!-- Раздел -->
             <!-- Раздел -->
             <div class="span4 profile">
                 <div class="image-wrap">
@@ -46,11 +35,10 @@
                     </div>
                     <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название">
                 </div>
-                <!-- <p class="profile-description">Можно и без него обойтись.</p> -->
+                <p class="profile-description">Описание раздела.</p>
             </div>
             <!-- Раздел -->
         </div>
     </div>
 </div>
-
 {% endblock %}
