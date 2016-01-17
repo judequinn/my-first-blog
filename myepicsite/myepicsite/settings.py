@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf import settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -122,15 +123,27 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
+
 # Media files
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+
+# Filebrowser settings
+
 FILEBROWSER_DIRECTORY = MEDIA_ROOT
 
-# TINYMCE_FILEBROWSER = True 
+FILEBROWSER_VERSIONS = getattr(settings, "FILEBROWSER_VERSIONS", {
+    'admin_thumbnail': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'thumbnail': {'verbose_name': '60x60', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'small': {'verbose_name': 'Ширина: 400', 'width': 400, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Ширина: 600', 'width': 600, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Ширина: 800', 'width': 800, 'height': '', 'opts': ''},
+    'large': {'verbose_name': 'Ширина: 1200', 'width': 1200, 'height': '', 'opts': ''},
+})
+
 
 # Google map options
 

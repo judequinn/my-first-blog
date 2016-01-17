@@ -213,21 +213,43 @@ pre code {
 #map {
 	height:80vh;
 	min-height: 400px;
-	width: 50%;
+	width: 65%;
 	min-width: 600px;
 }
 
 #map-menu {
 	height: auto;
 	width: 30%;
-}
-
-#map-container {
-	width: 95%;
+	min-width: 330px;
 }
 
 .section {
 	margin: 15px 0px;
+}
+
+/* Map menu */
+
+.my-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.my-menu > li {
+	margin: 15px 0px;
+}
+.submenu {
+    list-style: disc;
+    margin: 15px 10px 10px 20px;
+    padding: 0;
+}
+.submenu li {
+    font-size: 90%;
+}
+
+.group-name {
+	font-size:24px;
+	margin: 10px;
 }
 
 /* Balloons */
@@ -253,37 +275,12 @@ pre code {
 	margin: 3px 0px;
 }
 
-/* Map menu */
-
-.my-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.my-menu > li {
-	margin: 15px 0px;
-}
-.submenu {
-    list-style: none;
-    margin: 15px 10px 10px 20px;
-    padding: 0;
-}
-.submenu li {
-    font-size: 90%;
-}
-
-.group-name {
-	font-size:24px;
-	margin: 10px;
-}
-
 /* Review & Post Detail */
 
 .single-post {
 	border-top: 1px solid gray;
 	margin-bottom: 35px;
-	padding-top: 15px;
+	padding-top: 5px;
 }
 
 .single-post#post-detail {
@@ -293,30 +290,30 @@ pre code {
 }
 
 .post-header {
-	overflow: hidden
+	overflow: hidden;
+	margin: 10px 5px;
 }
 .post-published-date {
-	color: #FFFFFF;
-	margin: 15px;
+	color: #BCE7F5;
 	position: relative;
 	float: left;
-	width: 20%;
-	text-align: right;
+	width: 14%;
+	min-width: 150px;
+	text-align: left;
 	font-size: 11pt;
 }
 
 .post-title {
-	margin: 15px 5px;
 	position: relative;
 	float: left;
-	width: 75%;
-}
-
-.post-text {
 	width: 85%;
 }
 
-/* Creative */
+.post-text {
+	width: 100%;
+}
+
+/* Creative container */
 
 #container-creative {
 	margin-top: 5%;
