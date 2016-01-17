@@ -319,6 +319,12 @@ pre code {
 	margin-top: 5%;
 }
 
+/* Pagination */
+
+.pagination {
+    font-size: 14pt;
+}
+
 
 /* ==================================================
    Typography
