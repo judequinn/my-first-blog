@@ -5,17 +5,16 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def creative(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/creative.html', {'posts' : posts})
+    return render(request, 'blog/creative.html')
 
 
 def gallery(request):
-    pictures = Picture.objects.filter(published_date__lte=timezone.now()).order_by('published_date')    
+    pictures = Picture.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')    
     return render(request, 'blog/gallery.html', {'pictures' : pictures})
 
 
 def reviews(request): 
-    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     # Список разделов
     sections = Review.SECTION_CHOICES
     # Набор цветов для меток на карте
@@ -39,8 +38,7 @@ def reviews(request):
 
 
 def index(request):
-    reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/index.html', {'reviews' : reviews})
+    return render(request, 'blog/index.html')
 
 
 def contact(request):
@@ -49,7 +47,7 @@ def contact(request):
 
 def accessories(request):
 
-    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     paginator = Paginator(post_list, 10) # Показать по 10 постов на странице
     page = request.GET.get('page')
     try:
