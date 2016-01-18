@@ -8,10 +8,12 @@
             <div class="span4 profile">
                 <div class="image-wrap">
                     <div class="hover-wrap">
-                        <span class="overlay-img"></span>
+                        <a href='{% url 'accessories' %}'><span class="overlay-img"></span></a>
                         <span class="overlay-text-thumb"><a href='{% url 'accessories' %}'>Аксессуары</a></span>
                     </div>
-                    <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
+                    <a href='{% url 'accessories' %}'>
+                        <img src="{% static 'img/profile/profile-01.jpg' %}" alt="Название">
+                    </a>
                 </div>
                 <p class="profile-description">Описание раздела.</p>
             </div>
@@ -19,10 +21,10 @@
             <div class="span4 profile">
                 <div class="image-wrap">
                     <div class="hover-wrap">
-                        <span class="overlay-img"></span>
-                        <span class="overlay-text-thumb"><a href='{% url 'accessories' %}'>Тестовый раздел</a></span>
+                        <a href='#'><span class="overlay-img"></span></a>
+                        <span class="overlay-text-thumb"><a href='#'>Тестовый раздел</a></span>
                     </div>
-                    <img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название">
+                    <a href='#'><img src="{% static 'img/profile/profile-02.jpg' %}" alt="Название"></a>
                 </div>
                 <p class="profile-description">Описание раздела.</p>
             </div>
@@ -30,10 +32,10 @@
             <div class="span4 profile">
                 <div class="image-wrap">
                     <div class="hover-wrap">
-                        <span class="overlay-img"></span>
-                        <span class="overlay-text-thumb">Название раздела</span>
+                        <a href='#'><span class="overlay-img"></span></a>
+                        <span class="overlay-text-thumb"><a href='#'>Тестовый раздел</a></span>
                     </div>
-                    <img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название">
+                    <a href='#'><img src="{% static 'img/profile/profile-03.jpg' %}" alt="Название"></a>
                 </div>
                 <p class="profile-description">Описание раздела.</p>
             </div>

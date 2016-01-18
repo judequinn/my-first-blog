@@ -299,7 +299,7 @@ pre code {
 	float: left;
 	width: 14%;
 	min-width: 150px;
-	text-align: left;
+	text-align: center;
 	font-size: 11pt;
 }
 
@@ -307,6 +307,7 @@ pre code {
 	position: relative;
 	float: left;
 	width: 85%;
+	min-width: 340px;
 }
 
 .post-text {
@@ -786,7 +787,6 @@ nav#menu #menu-nav li a:hover {
 }
 
 .title-page .title {
-	font-size: 48px;
 	margin: 0 0 10px 0
 }
 
