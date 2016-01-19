@@ -349,9 +349,7 @@ BRUSHED.toolTip = function(){
 	Init
 ================================================== */
 
-//BRUSHED.slider();
-
-/*$(document).ready(function(){
+$(document).ready(function(){
 
 	Modernizr.load([
 	{
@@ -368,10 +366,10 @@ BRUSHED.toolTip = function(){
 				}
 		}
 	}
-	]); */
+	]);
 	
 	// Preload the page with jPreLoader
-	/*$('body').jpreLoader({
+	$('body').jpreLoader({
 		splashID: "#jSplash",
 		showSplash: true,
 		showPercentage: true,
@@ -380,7 +378,7 @@ BRUSHED.toolTip = function(){
 			$('#circle').delay(250).animate({'opacity' : 1}, 500, 'linear');
 		}
 	});
-    */
+    
 	
 	BRUSHED.nav();
 	BRUSHED.mobileNav();

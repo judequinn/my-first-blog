@@ -4,7 +4,7 @@
 {% block content %}
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Maps API -->
 <script>
-// Группы объектов
+// Группы объектов карты
 var groups = [
         {% for dot in dots %}
         {
@@ -31,8 +31,8 @@ var groups = [
 <div class="page">
     <div class="container">
         <div class="row">
-            <div class="span9" id="map"> <!-- Map  --> </div>
-            <div class="span5" id="map-menu"> <!-- Menu --> </div>
+            <div class="span8" id="map"> <!-- Map --> </div>
+            <div class="span4" id="map-menu"> <!-- Menu --> </div>
         </div>
     </div>
 </div>

@@ -15,7 +15,7 @@
 <!-- Meta Tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>The Blog</title>   
-<meta name="description" content="Insert Your Site Description" /> 
+<meta name="description" content="The Blog" /> 
 <!-- Mobile Specifics -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="HandheldFriendly" content="true"/>
@@ -127,6 +127,16 @@
   }
   ]);
   });
+</script>
+<!-- Map Resizing Script -->
+<script>
+    $(window).resize(function () {
+        var h = $(window).height(),
+            offsetTop = 100; // Calculate the top offset
+        console.log(h);
+
+        $('#map').css('height', (h - offsetTop));
+    }).resize();
 </script>
 <!-- End Js -->
 </body>

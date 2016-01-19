@@ -6,23 +6,23 @@
 		{% for post in posts %}
 		{% if post.published_date %}
 		{% if post.tag == 'accessories' %}
-    	<div class="single-post">
-	    	<div class="post-header">
-		    	<div class="post-title">
-		    		<h3><a href='{% url 'post_detail' slug=post.slug %}'>{{ post.title }}</a></h3>
+    	<div class="row">
+	    	<div class="span12 single-post">
+	    		<div class="row post-header">
+			    	<div class="post-title span10">
+			    		<h3><a href='{% url 'post_detail' slug=post.slug %}'>{{ post.title }}</a></h3>
+			    	</div>
+			    	<div class="post-published-date span2">
+			    		<p>{{ post.published_date|date:"d E Y" }}</p>
+			    	</div>
 		    	</div>
-		    	<div class="post-published-date">
-		    		<p>{{ post.published_date|date:"d E Y" }}</p>
-		    	</div>
-		    </div>
-	    	<div class="post-text">
 	    		{{ post.text|safe|linebreaks }}
 	    	</div>
-	    </div>
 		{% endif %}
 		{% endif %}
 		{% endfor %}
 		{% if posts.paginator.num_pages > 1 %}
+		</div>
 		<div class="pagination text-center">
     		<span class="step-links">
 		        {% if posts.has_previous %}

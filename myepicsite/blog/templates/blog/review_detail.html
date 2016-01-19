@@ -2,17 +2,17 @@
 {% load staticfiles %}
 {% block content %}
 <div class="page">
-    <div class="container"> 
-    	<div class="single-post" id="post-detail">
-	    	<div class="post-header">
-		    	<div class="post-title">
-		    		<h3>{{ review.title }}</h3>
+	<div class="container">
+    	<div class="row">
+	    	<div class="span12 single-post" id="post-detail">
+	    		<div class="row post-header">
+			    	<div class="post-title span10">
+			    		<h3>{{ review.title }}</h3>
+			    	</div>
+			    	<div class="post-published-date span2">
+			    		<p>{{ review.published_date|date:"d E Y" }}</p>
+			    	</div>
 		    	</div>
-		    	<div class="post-published-date">
-		    		<p>{{ review.published_date|date:"d E Y" }}</p>
-		    	</div>
-		    </div>
-	    	<div class="post-text">
 	    		{{ review.text|safe|linebreaks }}
 	    	</div>
 	    </div>
