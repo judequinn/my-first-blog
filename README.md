@@ -1,7 +1,8 @@
-Учебный проект блога на основе шаблона Brushed (http://www.alessioatzeni.com/blog/brushed-template/).
+Учебный проект блога на основе шаблона <a href="http://www.alessioatzeni.com/blog/brushed-template/">Brushed</a>.
 
-Использованные технологии:
-  Django Framework + packages (sorl-thumbnail, geoposition, grappelli, filebrowser, tinymce)
-  Bootstrap
-  jQuery
-  yandex.map API
+<ul>Использованные технологии:
+  <li>Django Framework + packages (sorl-thumbnail, geoposition, grappelli, filebrowser, tinymce)</li>
+  <li>Bootstrap</li>
+  <li>jQuery</li>
+  <li>yandex.map API</li>
+  </ul>
