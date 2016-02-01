@@ -351,7 +351,7 @@ BRUSHED.toolTip = function(){
 
 $(document).ready(function(){
 
-	Modernizr.load([
+	/*Modernizr.load([
 	{
 		test: Modernizr.placeholder,
 		nope: "static/js/placeholder.js", 
@@ -366,10 +366,10 @@ $(document).ready(function(){
 				}
 		}
 	}
-	]);
+	]);*/
 	
 	// Preload the page with jPreLoader
-	$('body').jpreLoader({
+	/*$('body').jpreLoader({
 		splashID: "#jSplash",
 		showSplash: true,
 		showPercentage: true,
@@ -377,7 +377,7 @@ $(document).ready(function(){
 		splashFunction: function() {
 			$('#circle').delay(250).animate({'opacity' : 1}, 500, 'linear');
 		}
-	});
+	});*/
     
 	
 	BRUSHED.nav();
