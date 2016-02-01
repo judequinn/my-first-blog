@@ -12,10 +12,15 @@
 <![endif]-->
 <html lang="en-US"> <!--<![endif]-->
 <head>
-<!-- Meta Tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>The Blog</title>   
-<meta name="description" content="The Blog" /> 
+<!-- Meta -->
+<meta charset="utf-8">
+<title>The Blog</title>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->   
+<meta name="description" content="The Blog" />
+<meta name="keywords" content="blog, design, art" />
+<meta name="robots" content="index, follow" />
 <!-- Mobile Specifics -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="HandheldFriendly" content="true"/>
@@ -44,6 +49,7 @@
 <!-- Google Font -->
 <link href='https://fonts.googleapis.com/css?family=Exo+2:300,200,200italic,300italic,800italic,700,400,400italic,600italic,700italic,900,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <!-- Fav Icon -->
+<link rel="icon" href="#">
 <link rel="shortcut icon" href="#">
 <link rel="apple-touch-icon" href="#">
 <link rel="apple-touch-icon" sizes="114x114" href="#">
@@ -65,34 +71,35 @@
 <!-- End Analytics -->
 </head>
 <body>
-<div id="wrap">
-  <!-- Header -->
-  <header>
+  <div id="wrap">
+    <!-- Header -->
+    <header>
       <div class="sticky-nav">
       	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>          
-          <div id="logo">
-          	<a href='{% url 'index' %}' title="На главную">Блог</a>
-          </div>          
-          <nav id="menu">
-          	<ul id="menu-nav">            	  
-                  <li><a class='external' href='{% url 'creative' %}'>Твори</a></li>
-                  <li><a class='external' href='{% url 'reviews' %}'>Пиши</a></li>
-                  <li><a class='external' href='{% url 'gallery' %}'>Вдохновляйся</a></li>                
-                  <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li> 				
-            </ul>
-          </nav>          
+        <div id="logo">
+        	<a href='{% url 'index' %}' title="На главную">Блог</a>
+        </div>          
+        <nav id="menu">
+        	<ul id="menu-nav">            	  
+            <li><a class='external' href='{% url 'creative' %}'>Твори</a></li>
+            <li><a class='external' href='{% url 'reviews' %}'>Пиши</a></li>
+            <li><a class='external' href='{% url 'gallery' %}'>Вдохновляйся</a></li>                
+            <li><a class='external' href='{% url 'contact' %}'>Контакты</a></li> 				
+          </ul>
+        </nav>          
       </div>
-  </header>
-  <!-- End Header -->
-  <div id="main">
-    {% block content %}
-    {% endblock %}
+    </header>
+    <!-- End Header -->
+    <div id="main">
+      {% block content %}
+      <!-- CONTENT -->
+      {% endblock %}
+    </div>
   </div>
-</div>
-<!-- Footer -->
-<footer id="bottom">
-	<p class="credits">&copy;2015 Копирайт.</p>
-</footer>
+  <!-- Footer -->
+  <footer id="bottom">
+  	<p class="credits">&copy;2015 Копирайт.</p>
+  </footer>
 <!-- End Footer -->
 <!-- Js -->
 <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script> <!-- jQuery Core -->
@@ -133,8 +140,6 @@
     $(window).resize(function () {
         var h = $(window).height(),
             offsetTop = 100; // Calculate the top offset
-        console.log(h);
-
         $('#map').css('height', (h - offsetTop));
     }).resize();
 </script>

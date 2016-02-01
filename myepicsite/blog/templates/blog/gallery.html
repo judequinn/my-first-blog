@@ -1,11 +1,7 @@
 {% extends 'blog/base_menu.html' %}
-
 {% load staticfiles %}
-
 {% load thumbnail %}
-
 {% block content %}
-
 <div id="work" class="page">
     <div class="container">    
         <div class="row">
@@ -13,7 +9,6 @@
                 <div class="row">
                     <section id="projects">
                         <ul id="thumbs">  
-
                             {% for picture in pictures %}
                                 <li class="item-thumbs span3 design">
                                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
@@ -25,16 +20,13 @@
                                     {% thumbnail picture.picture "x200" crop="center" as im %}
                                         <img src="{{ im.url }}" alt="{{ picture.comment }}">
                                     {% endthumbnail %}
-                                    
                                 </li>
-                            {% endfor %}
-                            
+                            {% endfor %} 
                         </ul>
                     </section>                    
                 </div>
             </div>
         </div>
     </div>
-</div>
-                               
+</div>                          
 {% endblock %}
