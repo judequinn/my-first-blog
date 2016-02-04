@@ -75,3 +75,10 @@ function init(){
     // Выставляем масштаб карты чтобы были видны все группы.
     myMap.setBounds(myMap.geoObjects.getBounds());
 }
+
+// Вычисление высоты карты
+$(window).resize(function () {
+    var h = $(window).height(),
+        offsetTop = 185; // Отступ
+    $('#map').css('height', (h - offsetTop));
+}).resize();
