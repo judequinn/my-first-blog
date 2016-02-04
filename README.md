@@ -8,3 +8,5 @@
   <li>jQuery</li>
   <li>yandex.map API</li>
 </ul>
+
+<a href="http://quinnteheskimo.pythonanywhere.com/index">Посмотреть, как это выглядит.</a>
