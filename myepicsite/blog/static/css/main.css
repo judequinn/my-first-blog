@@ -7,18 +7,19 @@ Description: Personal Website and Portfolio of Alessio Atzeni
 Version: 1.0
 */
 
-
 /* ==================================================
    Basic Styles
 ================================================== */
+html {
+  font-size: 100%;
+}
 
 html, body {
 	height: 100%;
 }
 
 html a {
-	width:100%;
-	font-size: 100%; 
+	width: 100%;
 	-webkit-text-size-adjust: 100%; 
 	-ms-text-size-adjust: 100%;
 }
@@ -26,15 +27,13 @@ html a {
 body {
 	background:#2F3238;
 	color:#7F8289;
+  font-size: 1em;
 	font-weight:300;
-	font-size:16px;
 	font-family: 'Exo 2', sans-serif;
-	line-height:28px;
 }
 
 a {
 	color:#FFFFFF;
-	text-decoration: none;
 	cursor: pointer;
 	
 	-webkit-transition: color 0.1s linear 0s;	
@@ -45,14 +44,12 @@ a {
 
 a:hover {
 	outline: 0;
-	text-decoration: none;
 	color:#30D5C8;
 }
 
 a:active,
 a:focus {
 	outline: 0;
-	text-decoration: none;
 	color:#FFFFFF;
 }
 
@@ -66,14 +63,7 @@ a > img {
 
 img {
 	max-width: 100%;
-}
-
-strong {
-  	font-weight: 500;
-}
-
-p {
-	margin: 0;
+  height: auto;
 }
 
 hr {
@@ -85,46 +75,13 @@ hr {
 	margin: 50px 0;	
 }
 
-.align_left{
-	float:left;
-	margin:0 25px 0 0px!important;
-}
-
-.align_right{
-	float:right;
-	margin:0 0 0 25px!important;
-}
-
-.text_align_left {
-	text-align: left;
-}
-
-.text_align_center {
-	text-align: center;
-}
-
-.text_align_right {
-	text-align: right;	
-}
-
-.color-text {
-    color: #30D5C8;
-}
-
-.through{
-	text-decoration:line-through;
-}
-
-button, select {
+button, select, textarea, input {
 	font-weight: 300;
 	font-family: 'Exo 2', sans-serif;
 	outline: 0;
 }
 
 textarea, input {
-	font-weight: 300;
-	font-family: 'Exo 2', sans-serif;
-	outline: 0;
 	width: 75%;
 	height: auto;
 }
@@ -219,7 +176,7 @@ pre code {
 }
 
 .my-menu > li {
-	margin: 15px 0px;
+    margin: 15px 0px;
 }
 .submenu {
     list-style: inside none disc;
@@ -231,8 +188,8 @@ pre code {
 }
 
 .group-name {
-	font-size:24px;
-	margin: 10px;
+    font-size:24px;
+    margin: 10px;
 }
 
 /* Balloons */
@@ -240,45 +197,40 @@ pre code {
 .balloon-link,
 .balloon-link:active,
 .balloon-link:focus {
-	color: #CF4E5B;
-	text-decoration: underline;
+    color: #CF4E5B;
+    text-decoration: underline;
 }
 
 .balloon-link:hover {
-	color: #30D5C8;
-	text-decoration: underline;
+    color: #30D5C8;
+    text-decoration: underline;
 }
 
 .balloon-p {
-	color: #2F3238;
-	margin: 3px 0px;
+    color: #2F3238;
+    margin: 3px 0px;
 }
 
 .balloon-h5 {
-	margin: 3px 0px;
+    margin: 3px 0px;
 }
 
 /* Review & Post Detail */
 
 .single-post {
-	border-top: 1px solid gray;
-	margin-bottom: 35px;
-	padding-top: 5px;
+    border-top: 1px solid gray;
+    margin-bottom: 35px;
+    padding-top: 10px;
 }
 
 .single-post#post-detail {
-	border: none;
-	margin: 0px;
-	padding: 0px;
+    border: none;
 }
 
 .post-published-date {
-	color: #BCE7F5;
-	font-size: 11pt;
-}
-
-.post-header {
-	margin: 10px 0px;
+    color: #BCE7F5;
+    font-size: 0.9em;
+    margin-bottom: 10px;
 }
 
 /* Pagination */
@@ -336,51 +288,6 @@ h3.spec {
     line-height: 1em;
     margin-bottom: 30px;
     text-transform: uppercase;
-}
-
-
-/* ==================================================
-   Margin Bottom Sets
-================================================== */
-
-.margin-0{
-	margin-bottom:0 !important;
-}
-
-.margin-10{
-	margin-bottom:10px !important;
-}
-
-.margin-15{
-	margin-bottom:15px !important;
-}
-
-.margin-20{
-	margin-bottom:20px !important;
-}
-
-.margin-30{
-	margin-bottom:30px !important;
-}
-
-.margin-40{
-	margin-bottom:40px !important;
-}
-
-.margin-50{
-	margin-bottom:50px !important;
-}
-
-.margin-60{
-	margin-bottom:60px !important;
-}
-
-.margin-70{
-	margin-bottom:70px !important;
-}
-
-.margin-80{
-	margin-bottom:80px !important;
 }
 
 
@@ -546,85 +453,44 @@ nav#menu #menu-nav li a:hover {
 
 .page {
 	background: #2F3238;
-	padding: 30px 0;
-	position: relative;
-	z-index: 99;
-}
-
-.page-alternate {
-	background: #26292E;
-	padding: 100px 0;
+	padding-top: 30px;
+  padding-bottom: 30px;
 	position: relative;
 	z-index: 99;
 }
 
 .title-page {
-	text-align: left;
 	margin-top: 15%;	
-}
-
-.title-page .title {
-	margin: 0 0 10px 0
-}
-
-.title-page .title-description {
-	font-size: 24px;
-	font-weight: 200;
-	margin: 0;
 }
 
 /* ==================================================
    Section Portfolio
 ================================================== */
 
-.type-work {
-	color: #FFFFFF;
-	font-size: 24px;
-	font-weight: 300;
-	margin-bottom: 30px;
-	line-height: 1em;
-	text-transform: uppercase;
+.hover-image img {
+  opacity: 1;
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 21px -3px rgba(0,0,0,1);
+  -moz-box-shadow: 6px 6px 21px -3px rgba(0,0,0,1);
+  box-shadow: 6px 6px 21px -3px rgba(0,0,0,1);
+  border: 0.5px solid #324567;
+  -webkit-transition: linear 0.1s;
+  transition: linear 0.1s;
+  cursor: pointer;
+  cursor: -moz-zoom-in; 
+  cursor: -webkit-zoom-in; 
+  cursor: zoom-in;
 }
 
-.work-nav #filters {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.work-nav #filters li {
-	margin: 0 0 30px 0;
-	padding: 0;
-}
-
-.work-nav #filters li a {
-	color: #7F8289;
-	font-size: 16px;
-	display: block;	
-}
-
-.work-nav #filters li a:hover {
-	color: #FFFFFF;
-}
-
-.work-nav #filters li a.selected {
-	color: #30D5C8;
-}
-
-#thumbs {
-	margin: 0;
-	padding: 0;	
-}
-
-#thumbs li {
-	list-style-type: none;
+.hover-image img:hover {
+  opacity: 0.7;
+  border: 0.5px solid #5c85d6;
+  filter: grayscale(25%);
 }
 
 .item-thumbs {
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 30px;
-	cursor: pointer;
+	margin-bottom: 0px;
+
 }
 
 .item-thumbs a + img {
@@ -909,50 +775,6 @@ nav#menu #menu-nav li a:hover {
 
 
 /* ==================================================
-   Twitter Feed
-================================================== */
-
-#twitter-feed {
-	padding: 100px 0 90px;
-	text-align: center;	
-}
-
-#twitter-feed .follow {
-	position: absolute;
-	bottom: 30px;
-	left: 50%;
-	margin-left: -8px;
-	font-size: 16px;	
-}
-
-#ticker .tweet_list {
-	margin: 0;
-	padding: 0;
-	height: 64px;
-	list-style: none;
-	overflow-y: hidden;	
-}
-
-#ticker .tweet_list li {
-	font-size: 18px;
-	height: 64px;
-	line-height: 28px;
-	overflow: hidden;
-}
-
-#ticker .tweet_list .tweet_time a {
-	color: #7f8289;
-	font-size: 14px;
-	font-style: italic;
-	margin-left: 10px;	
-}
-
-#ticker .tweet_list .tweet_time a:hover {
-	color: #FFFFFF;	
-}
-
-
-/* ==================================================
    Social Area
 ================================================== */
 
@@ -1076,11 +898,11 @@ footer .credits {
 
 /*Opera Fix*/
 body:before {
-	content:"";
-	height:100%;
-	float:left;
-	width:0;
-	margin-top:-32767px;/
+	content: "";
+	height: 100%;
+	float: left;
+	width: 0;
+	margin-top: -32767px;/
 }
 
 /* ==================================================
@@ -1120,137 +942,6 @@ body:before {
 
 #back-to-top i {
 	margin-left: -7px;	
-}
-
-
-/* ==================================================
-   Preloader
-================================================== */
-
-#jpreOverlay,
-#jSplash {
-	background-color: #2F3238;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	z-index: 700;
-}
-
-#jpreSlide{
-	position: absolute;
-	top: 50% !important;
-	left: 50% !important;
-	margin: -50px 0 0 -50px;
-	width: 100px;
-	height: 100px;
-}
-
-#jpreLoader {
-	position: relative !important;
-	width: 100% !important;
-	height: 100% !important;
-	top: 0 !important;	
-}
-
-#jprePercentage {
-	width: 50px;
-	height: 50px !important;
-	line-height: 50px;
-	position: absolute !important;
-	text-align: center;
-	left: 50%;
-	top: 50%;
-	margin: -25px 0 0 -25px;
-	z-index: 800;
-	
-	font-size: 24px;
-	color: #FFFFFF;	
-
-	-webkit-animation: circle 1s infinite forwards;
-	   -moz-animation: circle 1s infinite forwards;
-		-ms-animation: circle 1s infinite forwards;
-		 -o-animation: circle 1s infinite forwards;
-			animation: circle 1s infinite forwards;
-}
-
-#circle {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	z-index: 11;
-	margin: -50px 0 0 -50px;
-	width: 100px;
-	height: 100px;
-	background: #30D5C8;
-	-webkit-border-radius: 999px;
-	-moz-border-radius: 999px;
-	border-radius: 999px;
-	opacity: 0;
-	filter: alpha(opacity=0);
-			
-	-webkit-animation: circle 1s infinite forwards;
-	   -moz-animation: circle 1s infinite forwards;
-		-ms-animation: circle 1s infinite forwards;
-			animation: circle 1s infinite forwards;
-}
-
-@-webkit-keyframes circle {
-	0% {-webkit-transform: rotateY(0deg);
-		-webkit-animation-timing-function: ease-in;
-	}
-	50% {-webkit-transform: rotateY(180deg);
-		-webkit-animation-timing-function: ease-out;
-	}
-	100% {-webkit-transform: rotateY(0deg);
-		-webkit-animation-timing-function: ease-in;
-	}
-}
-
-@-moz-keyframes circle {
-	0% {-moz-transform: rotateY(0deg);
-	}
-	50% {-moz-transform: rotateY(180deg);
-		-moz-animation-timing-function: ease-out;
-	}
-	100% {-moz-transform: rotateY(0deg);
-		-moz-animation-timing-function: ease-in;
-	}
-}
-
-@-ms-keyframes circle {
-	0% {-ms-transform: rotateY(0deg);
-		-ms-animation-timing-function: ease-in;
-	}
-	50% {-ms-transform: rotateY(180deg);
-		-ms-animation-timing-function: ease-out;
-	}
-	100% {-ms-transform: rotateY(0deg);
-		-ms-animation-timing-function: ease-in;
-	}
-}
-
-@-o-keyframes circle {
-	0% {-o-transform: rotateY(0deg);
-		-o-animation-timing-function: ease-in;
-	}
-	50% {-o-transform: rotateY(180deg);
-		-o-animation-timing-function: ease-out;
-	}
-	100% {-o-transform: rotateY(0deg);
-		-o-animation-timing-function: ease-in;
-	}
-}
-
-@keyframes circle {
-	0% {transform: rotateY(0deg);
-		animation-timing-function: ease-in;
-	}
-	50% {transform: rotateY(180deg);
-		animation-timing-function: ease-out;
-	}
-	100% {transform: rotateY(0deg);
-		animation-timing-function: ease-in;
-	}
 }
 
 
