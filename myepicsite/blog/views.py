@@ -5,15 +5,18 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def creative(request):
+
     return render(request, 'blog/creative.html')
 
 
 def gallery(request):
+
     pictures = Picture.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')    
     return render(request, 'blog/gallery.html', {'pictures' : pictures})
 
 
 def reviews(request): 
+
     reviews = Review.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     # Список разделов
     sections = Review.SECTION_CHOICES
@@ -38,10 +41,12 @@ def reviews(request):
 
 
 def index(request):
+
     return render(request, 'blog/index.html')
 
 
 def contact(request):
+
     return render(request, 'blog/contact.html') 
 
 
@@ -62,10 +67,12 @@ def accessories(request):
 
 
 def post_detail(request, slug):
+
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
 def review_detail(request, slug):
+
     review = get_object_or_404(Review, slug=slug)
     return render(request, 'blog/review_detail.html', {'review': review})
