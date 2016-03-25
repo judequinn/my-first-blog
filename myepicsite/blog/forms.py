@@ -18,7 +18,7 @@ class PostForm(forms.ModelForm):
 
         model = Post
         fields =  ['author', 'title', 'tag', 'slug', 
-        		   'published_date']
+                   'published_date']
 
 
 class PictureForm(forms.ModelForm):

@@ -1,7 +1,6 @@
 {% extends 'blog/base_menu.html' %}
 {% load staticfiles %}
 {% block content %}
-
 	<div class="container page">
 		<div class="row">
 		{% for post in posts %}
@@ -42,5 +41,4 @@
 		</div> <!-- End of pagination -->
 		{% endif %}	
 	</div> <!-- End of container -->
-
 {% endblock %}
