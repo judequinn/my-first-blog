@@ -1,22 +1,37 @@
 {% extends 'blog/base_menu.html' %}
+
 {% load staticfiles %}
+
 {% load thumbnail %}
+
 {% block content %}
-<div id="work" class="page">
-    <div class="container-fluid">
-        <div class="row">
-            {% for picture in pictures %}
-                <div class="item-thumbs col-lg-2 col-md-3 col-sm-6 col-xs-12">
-                    <a class="hover-image" target="_blank" title="{{ picture.title }}" href="{{ MEDIA_URL }}{{ picture.picture }}">
-                        <!-- Thumb Image and Description -->
-                        {% thumbnail picture.picture "500x300" crop="center" as im %}
-                            <img src="{{ im.url }}" alt="{{ picture.title }}">
-                        {% endthumbnail %}
-                    </a>
-                    <p>{{picture.title}}</p>
-                </div>
-            {% endfor %} 
-        </div>
-    </div>
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			{% for picture in pictures %}
+
+				<div class="item-thumbs col-lg-2 col-md-3 col-sm-6 col-xs-12">
+
+					<a class="hover-image" target="_blank" title="{{ picture.title }}" href="{{ MEDIA_URL }}{{ picture.picture }}">
+
+						{% thumbnail picture.picture "500x300" crop="center" as im %}
+							<img src="{{ im.url }}" alt="{{ picture.title }}">
+						{% endthumbnail %}
+
+					</a>
+
+					<p>{{picture.title}}</p>
+
+				</div>
+
+			{% endfor %}
+
+		</div>
+
+	</div>
+
 </div>
+
 {% endblock %}

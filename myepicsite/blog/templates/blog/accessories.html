@@ -24,16 +24,17 @@
 						<p>{{ post.published_date|date:"d E Y" }}</p>
 					</div>
 
-				</div> <!-- End of post header -->
+				</div>
 
 				{{ post.text|safe|linebreaks }}
-			</div> <!-- End of single post -->
+
+			</div>
 
 		{% endif %}
 		{% endif %}
 		{% endfor %}
 
-		</div> <!-- End of row -->
+		</div>
 
 		{% if posts.paginator.num_pages > 1 %}
 
