@@ -10,12 +10,10 @@ Version: 1.0
 /* ==================================================
    Basic Styles
 ================================================== */
-html {
-  font-size: 100%;
-}
 
 html, body {
 	height: 100%;
+	font-size: 100%;
 }
 
 html a {
@@ -25,10 +23,9 @@ html a {
 }
 
 body {
-	background:#2F3238;
-	color:#7F8289;
-  font-size: 1em;
-	font-weight:300;
+	background: #2F3238;
+	color: #fff;
+	font-weight: 300;
 	font-family: 'Exo 2', sans-serif;
 }
 
@@ -215,79 +212,32 @@ pre code {
 	margin: 3px 0px;
 }
 
-/* Review & Post Detail */
+/* SINGLE POST */
 
 .single-post {
 	border-top: 1px solid gray;
 	margin-bottom: 35px;
-	padding-top: 10px;
+	padding-top: 20px;
 }
 
-.single-post#post-detail {
+.single-post--detail {
 	border: none;
 }
 
-.post-published-date {
+.single-post__title {
+	margin-top: 0;
+}
+
+.single-post__published-date {
 	color: #BCE7F5;
 	font-size: 0.9em;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 /* Pagination */
 
 .pagination {
 	font-size: 14pt;
-}
-
-
-/* ==================================================
-   Typography
-================================================== */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6{
-	margin:0 0 10px 0;
-	color:#FFFFFF;
-	font-weight:300;
-	font-family: 'Exo 2', sans-serif;
-	line-height:1.5em;
-}
-
-h1{
-	font-size:48px;
-}
-
-h2{
-	font-size:36px;
-}
-
-h3{
-	font-size:24px;
-}
-
-h4{
-	font-size:20px;
-}
-
-h5{
-	font-size:18px;
-}
-
-h6{
-	font-size:16px;
-}
-
-h3.spec {
-	color: #FFFFFF;
-	font-size: 24px;
-	font-weight: 300;
-	line-height: 1em;
-	margin-bottom: 30px;
-	text-transform: uppercase;
 }
 
 
@@ -451,8 +401,9 @@ nav#menu #menu-nav li a:hover {
    Section Page
 ================================================== */
 
-.page {
-	padding: 30px 0;
+.container {
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 .title-page {
