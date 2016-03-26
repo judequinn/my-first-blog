@@ -84,7 +84,6 @@ $(document).ready(function(){
     BRUSHED.mobileNav();
     BRUSHED.listenerMenu();
     BRUSHED.menu();
-    BRUSHED.goSection();
 
 });
 
