@@ -1025,7 +1025,7 @@ body:before {
 
 	#menu-nav-mobile {
 		margin: 0;
-		padding: 0;
+		padding-left: 0;
 	}
 
 	header .sticky-nav #mobile-nav,
@@ -1074,14 +1074,6 @@ body:before {
 
 	header .sticky-nav {
 		position: relative; 
-	}
-
-	header .sticky-nav,
-	#navigation-mobile,
-	#twitter-feed,
-	footer {
-		padding-left: 20px;
-		padding-right: 20px;
 	}
 
 	header .sticky-nav #logo {
@@ -1232,13 +1224,6 @@ body:before {
 		position: relative;
 	}
 
-	header .sticky-nav,
-	#navigation-mobile,
-	footer {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-
 	header .sticky-nav #logo {
 		margin-left: 0;
 	}
@@ -1268,6 +1253,7 @@ body:before {
 		margin-left: -20px;
 		margin-right: -20px;
 		margin-bottom: 0;
+		padding-left: 0;
 	}
 
 	#navigation-mobile li a {
