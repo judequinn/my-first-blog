@@ -24,16 +24,12 @@
 <!-- Google Font -->
 <link href='https://fonts.googleapis.com/css?family=Exo+2:300,200,200italic,300italic,800italic,700,400,400italic,600italic,700italic,900,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
-<!-- Modernizr -->
-<script src="{% static 'js/modernizr.js' %}"></script>
-
 <!-- GA -->
 <script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 	ga('create', 'UA-75634104-1', 'auto');
 	ga('send', 'pageview');
 </script>
@@ -84,35 +80,15 @@
 <!-- Js -->
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> <!-- jQuery Core -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> <!-- Bootstrap JS -->
+
 <script src="{% static 'js/waypoints.js' %}"></script> <!-- WayPoints -->
 <script src="{% static 'js/waypoints-sticky.js' %}"></script> <!-- Waypoints for Header -->
-<script src="{% static 'js/jquery.isotope.js' %}"></script> <!-- Isotope Filter -->
-<script src="{% static 'js/jquery.tweet.js' %}"></script> <!-- Tweet -->
 <script src="{% static 'js/plugins.js' %}"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
-<script src="{% static 'js/main.js' %}"></script> <!-- Default JS -->
-<script src="{% static 'js/map.js' %}"></script> <!-- YandexMap JS -->
 
-<!-- Placeholder -->
-<script type="text/javascript">
-	$(document).ready(function(){
-	Modernizr.load([
-	{
-		test: Modernizr.placeholder,
-		nope: "{% static 'js/placeholder.js' %}", 
-		complete : function() {
-				if (!Modernizr.placeholder) {
-						Placeholders.init({
-						live: true,
-						hideOnFocus: false,
-						className: "yourClass",
-						textColor: "#999"
-						});    
-				}
-		}
-	}
-	]);
-	});
-</script>
+<script src="{% static 'js/main.js' %}"></script> <!-- Default JS -->
+
+{% block additionaljs %}
+{% endblock %}
 
 <!-- End Js -->
 </body>

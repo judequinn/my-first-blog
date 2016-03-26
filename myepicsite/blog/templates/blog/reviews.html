@@ -1,40 +1,53 @@
 {% extends 'blog/base_menu.html' %}
-{% load staticfiles %}
-{% load replace_commas %}
-{% block content %}
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Maps API -->
-<script>
-// Группы объектов карты
-var groups = [
-        {% for dot in dots %}
-        {
-            name: "{{ dot.0 }}",
-            style: "islands#{{ dot.1 }}Icon",
-            items: [
-                {% for review in reviews %}
-                {% if review.position.latitude and review.position.longitude %}
-                {% if review.tag == dot.2 %}
-                {
-                    center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
-                    name: "{{ review.title }} ({{ review.address }})",
-                    url: "{% url 'review_detail' slug=review.slug %}",
-                    head: "{{ review.title }}",
-                    body: "{{ review.address }}"
-                },
-                {% endif %}
-                {% endif %}
-                {% endfor %} 
-            ]
-        },
-        {% endfor %}
-        ];
-</script>
 
-    <div class="container page">
-        <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="map"> <!-- Map --> </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="map-menu"> <!-- Menu --> </div>
-        </div>
-    </div>
+{% load staticfiles %}
+
+{% load replace_commas %}
+
+{% block content %}
+
+	<div class="container page">
+			<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="map"> <!-- Map --> </div>
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" id="map-menu"> <!-- Menu --> </div>
+			</div>
+	</div>
+
+{% endblock %}
+
+{% block additionaljs %}
+
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script> <!-- Yandex Maps API -->
+
+	<!-- Object Collection -->
+	<script>
+
+	var groups = [
+		{% for dot in dots %}
+		{
+				name: "{{ dot.0 }}",
+				style: "islands#{{ dot.1 }}Icon",
+				items: [
+						{% for review in reviews %}
+						{% if review.position.latitude and review.position.longitude %}
+						{% if review.tag == dot.2 %}
+						{
+								center: [{{ review.position.latitude|stringify }}, {{ review.position.longitude|stringify }}],
+								name: "{{ review.title }} ({{ review.address }})",
+								url: "{% url 'review_detail' slug=review.slug %}",
+								head: "{{ review.title }}",
+								body: "{{ review.address }}"
+						},
+						{% endif %}
+						{% endif %}
+						{% endfor %} 
+				]
+		},
+		{% endfor %}
+	];
+
+	</script>
+
+	<script src="{% static 'js/map.js' %}"></script> <!-- YandexMap JS -->
 
 {% endblock %}
